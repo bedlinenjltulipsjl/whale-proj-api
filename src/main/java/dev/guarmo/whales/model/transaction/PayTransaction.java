@@ -1,0 +1,22 @@
+package dev.guarmo.whales.model.transaction;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
+@MappedSuperclass
+public class PayTransaction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @JsonProperty("amount")
+    private Double transactionAmount;
+    @Column(updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+}
