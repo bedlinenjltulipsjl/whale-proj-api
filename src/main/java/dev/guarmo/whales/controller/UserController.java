@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping("/reftree/{tgid}")
-    public GetContentWithoutHistoryUserDto getReferralsTree(@PathVariable String tgid) {
+    public GetUserWithReferralsDto getReferralsTree(@PathVariable String tgid) {
         return userService.getFourLevelsReferralTree(tgid);
     }
 
