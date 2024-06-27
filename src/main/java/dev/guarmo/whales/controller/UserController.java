@@ -8,10 +8,13 @@ import dev.guarmo.whales.model.user.dto.PostUserDto;
 import dev.guarmo.whales.service.DepositService;
 import dev.guarmo.whales.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
@@ -32,8 +35,8 @@ public class UserController {
         return userService.getFourLevelsReferralTree(tgid);
     }
 
-    @GetMapping("/{tgid}")
-    public GetContentWithoutHistoryUserDto getContentUserDtoByTgId(@PathVariable String tgid) {
-        return userService.findByLogin(tgid);
+    @GetMapping("/by-token")
+    public GetContentWithoutHistoryUserDto getContentUserDtoByTgId(Authentication authentication) {
+        return userService.findByLogin(authentication.getName());
     }
 }
