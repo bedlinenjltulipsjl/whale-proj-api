@@ -14,6 +14,8 @@ public class InvestModel {
     private Double priceAmount;
     private Integer cyclesCount;
     private Integer cyclesBeforeFreezeCount;
+    private InvestModelStatus investModelStatus;
+    private InvestModelLevel investModelLevel;
     @Column(updatable = false)
     private LocalDateTime unlockDate;
     @Column(updatable = false)

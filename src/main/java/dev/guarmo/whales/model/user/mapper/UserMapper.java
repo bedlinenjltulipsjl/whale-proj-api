@@ -1,5 +1,6 @@
 package dev.guarmo.whales.model.user.mapper;
 
+import dev.guarmo.whales.config.MapperConfig;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
 import dev.guarmo.whales.model.transaction.income.Income;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
@@ -7,7 +8,6 @@ import dev.guarmo.whales.model.transaction.withdraw.MoneyWithdraw;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.model.user.dto.*;
 import org.mapstruct.*;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class GetPurchaseDto {
     private Long id;
-    private String transactionAmount;
+    private Double transactionAmount;
     private String description;
     private LocalDateTime createdAt;
 }

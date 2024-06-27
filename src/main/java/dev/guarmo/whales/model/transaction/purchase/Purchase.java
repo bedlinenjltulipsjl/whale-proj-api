@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class Purchase extends PayTransaction {
-    private String purchaseAmount;
+    private Double purchaseAmount;
     private String description;
     @Column(updatable = false)
     @CreationTimestamp
