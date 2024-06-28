@@ -12,6 +12,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import java.util.Random;
+
 @Mapper(config = MapperConfig.class, uses = IncomeMapperHelper.class)
 public interface IncomeMapper {
     GetIncomeDto toGetDto(Income income);
@@ -21,8 +23,10 @@ public interface IncomeMapper {
 
     @Mapping(target = "description", ignore = true)
     GetTransaction toGetTransaction(Income deposit);
+
     @AfterMapping
     default void setTransactionDesc(@MappingTarget GetTransaction getTransaction, Income income) {
+        getTransaction.setCreatedAt(getTransaction.getCreatedAt().minusDays(1));
         getTransaction.setTransactionType(TransactionType.INCOME);
         getTransaction.setDescription("Referral bonus from " + income.getIncomeCausedByUser().getName());
     }
