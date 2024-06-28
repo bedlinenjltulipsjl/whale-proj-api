@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/tables")
+@CrossOrigin(allowedHeaders = "*")
 public class InvestEntityController {
     private final InvestModelService investModelService;
 //    @GetMapping

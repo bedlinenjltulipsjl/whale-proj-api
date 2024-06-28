@@ -6,6 +6,8 @@ import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
 import dev.guarmo.whales.model.investmodel.dto.GetInvestModel;
 import dev.guarmo.whales.model.investmodel.dto.PostInvestModel;
+import dev.guarmo.whales.model.investmodel.mapper.InvestModelMapper;
+import dev.guarmo.whales.model.investmodel.mapper.impl.InvestModelMapperImpl;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.purchase.dto.PostPurchaseDto;
 import dev.guarmo.whales.model.user.UserCredentials;
@@ -29,6 +31,7 @@ public class InvestModelService {
     private final PurchaseService purchaseService;
     private final UserHelper userHelper;
     private final UserCredentialsRepo userCredentialsRepo;
+    private final InvestModelMapper investModelMapper;
 
     public List<InvestModel> generateDefaultInvestModels() {
         List<InvestModel> investModels = getInvestModelsList();
@@ -42,9 +45,9 @@ public class InvestModelService {
             investModels[i] = generateInvestModel(i);
         }
 
-        investModels[9].setInvestModelStatus(InvestModelStatus.FROZEN);
-        investModels[10].setInvestModelStatus(InvestModelStatus.FINISHED);
-        investModels[11].setInvestModelStatus(InvestModelStatus.TIMELOCKED);
+        investModels[9].setInvestModelStatus(InvestModelStatus.AVAILABLE);
+        investModels[10].setInvestModelStatus(InvestModelStatus.AVAILABLE);
+        investModels[11].setInvestModelStatus(InvestModelStatus.AVAILABLE);
         investModels[12].setInvestModelStatus(InvestModelStatus.AVAILABLE);
         investModels[13].setInvestModelStatus(InvestModelStatus.LOCKED);
         investModels[14].setInvestModelStatus(InvestModelStatus.SPECIALS);
@@ -59,7 +62,7 @@ public class InvestModelService {
         investModel.setCyclesCount(i + 1); // Example cycles count
         investModel.setCyclesBeforeFinishedNumber(i + 19); // Example cycles before freeze count
         investModel.setCyclesBeforeFreezeNumber(i + 4); // Example cycles before freeze count
-        investModel.setUnlockDate(LocalDateTime.now().minusHours(i)); // Example cycles before freeze count
+        investModel.setUnlockDate(LocalDateTime.now().plusDays(1).minusHours(i)); // Example cycles before freeze count
         investModel.setInvestModelLevel(InvestModelLevel.values()[i]); // Assigning levels sequentially
 
         // Assigning statuses in increasing order from 1 to 16
@@ -78,14 +81,12 @@ public class InvestModelService {
             purchaseService.addPurchaseToUser(postPurchaseDto, login);
 
             gotModelFromUser.setInvestModelStatus(InvestModelStatus.BOUGHT);
-            investModelRepo.save(gotModelFromUser);
+            return investModelMapper.toGetDto(investModelRepo.save(gotModelFromUser));
+        } else {
+            log.error("Invest Model wrong status (UNABLE TO PURCHASE): {}", gotModelFromUser);
+            throw new RuntimeException("Invest Model wrong status (UNABLE TO PURCHASE): " + gotModelFromUser);
         }
-        log.error("Invest Model wrong status (UNABLE TO PURCHASE): {}", gotModelFromUser);
-        throw new RuntimeException("Invest Model wrong status (UNABLE TO PURCHASE): " + gotModelFromUser);
     }
-
-//    @Transactional
-
 
 //    public List<GetInvestModel> getAllInvestTables(String name) {
 //
