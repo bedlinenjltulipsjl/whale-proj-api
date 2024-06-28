@@ -1,6 +1,7 @@
 package dev.guarmo.whales.controller;
 
 import dev.guarmo.whales.helper.UserHelper;
+import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.dto.GetInvestModel;
 import dev.guarmo.whales.model.investmodel.mapper.InvestModelMapper;
 import dev.guarmo.whales.model.user.RoleStatus;
@@ -13,7 +14,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -46,11 +51,15 @@ public class UserController {
     @GetMapping("/by-token")
     public GetFullDto getContentUserDtoByTgId(Authentication authentication) {
         UserCredentials model = userService.findByLoginModel(authentication.getName());
-        List<GetInvestModel> list = model.getInvestModels().stream().map(investModelMapper::toGetDto).toList();
+        List<GetInvestModel> sortedInvestModels = model.getInvestModels().stream()
+                .map(investModelMapper::toGetDto)
+                .sorted(Comparator.comparing(GetInvestModel::getInvestModelLevel))
+                .toList();
+
 
         GetFullDto fullDtoByLogin = userService.findFullDtoByLogin(authentication.getName());
         fullDtoByLogin.setTransactions(allTransactionService.getAllTypesOfTransactions(authentication.getName()));
-        fullDtoByLogin.setInvestModels(list);
+        fullDtoByLogin.setInvestModels(sortedInvestModels);
         return fullDtoByLogin;
     }
 
