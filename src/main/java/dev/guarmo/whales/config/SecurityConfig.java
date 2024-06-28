@@ -55,6 +55,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/pay/ipn").permitAll()
                         .requestMatchers("/auth/register").permitAll()
+                        .requestMatchers("/users/register").permitAll()
                         .requestMatchers("/auth/token").authenticated()
                         .anyRequest().hasAnyAuthority("SCOPE_USER", "SCOPE_ADMIN")
                 )

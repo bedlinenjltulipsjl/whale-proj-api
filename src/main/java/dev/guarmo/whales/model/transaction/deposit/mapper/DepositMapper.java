@@ -1,10 +1,16 @@
 package dev.guarmo.whales.model.transaction.deposit.mapper;
 
 import dev.guarmo.whales.config.MapperConfig;
+import dev.guarmo.whales.model.transaction.GetTransaction;
+import dev.guarmo.whales.model.transaction.TransactionType;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
 import dev.guarmo.whales.model.transaction.deposit.dto.GetDepositDto;
 import dev.guarmo.whales.model.transaction.deposit.dto.PostDepositDto;
+import org.checkerframework.checker.units.qual.A;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.springframework.util.MultiValueMap;
 
 @Mapper(config = MapperConfig.class)
@@ -27,4 +33,12 @@ public interface DepositMapper {
     GetDepositDto toGetDto(Deposit user);
 
     Deposit toModel(PostDepositDto crmUserDto);
+
+    @Mapping(target = "description", ignore = true)
+    GetTransaction toGetTransaction(Deposit deposit);
+    @AfterMapping
+    default void setTransactionDesc(@MappingTarget GetTransaction getTransaction, Deposit deposit) {
+        getTransaction.setTransactionType(TransactionType.DEPOSIT);
+        getTransaction.setDescription(deposit.getCurrency() + " deposit from address " + deposit.getAddress());
+    }
 }

@@ -11,6 +11,8 @@ import dev.guarmo.whales.repository.WithdrawRepo;
 import dev.guarmo.whales.teleg.TelegramService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -22,23 +24,36 @@ public class WithdrawService {
     private final WithdrawMapper withdrawMapper;
     private final TelegramService telegramService;
 
+    @Transactional
     public GetWithdrawDto addWithdrawRequest(PostWithdrawDto postWithdrawDto, String login) {
+        UserCredentials userCredentials = userCredentialsRepo.findByLogin(login).orElseThrow();
+        if (userCredentials.getBalanceAmount() < postWithdrawDto.getTransactionAmount()) {
+            throw new RuntimeException("Not enough balance");
+        }
+
         MoneyWithdraw model = withdrawMapper.toModel(postWithdrawDto);
         model.setWithdrawStatus(WithdrawStatus.PENDING);
         MoneyWithdraw saved = withdrawRepo.save(model);
 
-        UserCredentials userCredentials = userCredentialsRepo.findByLogin(login).orElseThrow();
         userCredentials.getWithdraws().add(model);
+        GetWithdrawDto withdrawGetDto = withdrawMapper.toGetDto(saved);
+        telegramService.sendNotificationAboutWithdraw(userCredentials, withdrawGetDto);
+
+        userCredentials.setBalanceAmount(
+                userCredentials.getBalanceAmount() -
+                model.getTransactionAmount());
         userCredentialsRepo.save(userCredentials);
 
-        GetWithdrawDto withdrawGetDto = withdrawMapper.toGetDto(saved);
-
-        telegramService.sendNotificationAboutWithdraw(userCredentials, withdrawGetDto);
         return withdrawGetDto;
     }
 
     public List<GetWithdrawDto> getWithdrawsOfUserByLogin(String tgid) {
         UserCredentials userCredentials = userCredentialsRepo.findByLogin(tgid).orElseThrow();
         return userCredentials.getWithdraws().stream().map(withdrawMapper::toGetDto).toList();
+    }
+
+    public List<MoneyWithdraw> getWithdrawModelsByLogin(String tgid) {
+        UserCredentials userCredentials = userCredentialsRepo.findByLogin(tgid).orElseThrow();
+        return userCredentials.getWithdraws();
     }
 }

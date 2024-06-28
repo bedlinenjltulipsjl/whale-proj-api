@@ -4,6 +4,7 @@ import dev.guarmo.whales.model.transaction.withdraw.dto.GetWithdrawDto;
 import dev.guarmo.whales.model.transaction.withdraw.dto.PostWithdrawDto;
 import dev.guarmo.whales.service.WithdrawService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,13 +15,13 @@ import java.util.List;
 public class WithdrawController {
     private final WithdrawService withdrawService;
 
-    @PostMapping("/{tgid}")
-    public GetWithdrawDto addWithdrawRequest(@RequestBody PostWithdrawDto postWithdrawDto, @PathVariable String tgid) {
-        return withdrawService.addWithdrawRequest(postWithdrawDto, tgid);
+    @PostMapping
+    public GetWithdrawDto addWithdrawRequest(@RequestBody PostWithdrawDto postWithdrawDto, Authentication authentication) {
+        return withdrawService.addWithdrawRequest(postWithdrawDto, authentication.getName());
     }
 
-    @GetMapping("/{tgid}")
-    public List<GetWithdrawDto> getWithdrawsOfUser(@PathVariable String tgid) {
-        return withdrawService.getWithdrawsOfUserByLogin(tgid);
+    @GetMapping
+    public List<GetWithdrawDto> getWithdrawsOfUser(Authentication authentication) {
+        return withdrawService.getWithdrawsOfUserByLogin(authentication.getName());
     }
 }

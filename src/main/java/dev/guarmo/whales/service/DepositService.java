@@ -48,4 +48,9 @@ public class DepositService {
         UserCredentials userCredentials = userCredentialsRepo.findByLogin(login).orElseThrow();
         return userCredentials.getDeposits().stream().map(depositMapper::toGetDto).toList();
     }
+
+    public List<Deposit> findAllDepositModelsByLogin(String login) {
+        UserCredentials userCredentials = userCredentialsRepo.findByLogin(login).orElseThrow();
+        return userCredentials.getDeposits();
+    }
 }

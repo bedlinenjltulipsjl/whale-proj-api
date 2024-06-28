@@ -9,6 +9,7 @@ import dev.guarmo.whales.repository.PurchaseRepo;
 import dev.guarmo.whales.repository.UserCredentialsRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,25 +19,37 @@ public class PurchaseService {
 
     private final PurchaseMapper purchaseMapper;
     private final PurchaseRepo purchaseRepo;
-    private final UserService userService;
     private final UserCredentialsRepo userCredentialsRepo;
 
     public List<GetPurchaseDto> getPurchaseDtoList(String tgid) {
-        return userService.findByLoginModel(tgid)
+        return userCredentialsRepo.findByLogin(tgid).orElseThrow()
                 .getPurchases()
                 .stream()
                 .map(purchaseMapper::toGetDto)
                 .toList();
     }
 
-    public GetPurchaseDto addPurchaseToUser(PostPurchaseDto dto, String tgid) {
-        Purchase model = purchaseRepo.save(purchaseMapper.toModel(dto));
+    public List<Purchase> getPurchaseModelsByUser(String tgid) {
+        return userCredentialsRepo.findByLogin(tgid)
+                .orElseThrow()
+                .getPurchases();
+    }
 
-        UserCredentials byLoginModel = userService.findByLoginModel(tgid);
-        byLoginModel.getPurchases().add(model);
+    @Transactional
+    public GetPurchaseDto addPurchaseToUser(PostPurchaseDto dto, String tgid) {
+        Purchase model = purchaseMapper.toModel(dto);
+        Purchase saved = purchaseRepo.save(model);
+
+        UserCredentials byLoginModel = userCredentialsRepo
+                .findByLogin(tgid)
+                .orElseThrow();
+        byLoginModel.getPurchases().add(saved);
+
+        byLoginModel.setBalanceAmount(
+                byLoginModel.getBalanceAmount() - saved.getTransactionAmount());
 
         userCredentialsRepo.save(byLoginModel);
-        return purchaseMapper.toGetDto(model);
+        return purchaseMapper.toGetDto(saved);
 
     }
 }

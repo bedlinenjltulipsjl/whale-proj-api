@@ -8,6 +8,7 @@ import dev.guarmo.whales.service.InvoiceGeneratorService;
 import dev.guarmo.whales.service.DepositService;
 import dev.guarmo.whales.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -19,9 +20,9 @@ public class DepositController {
     private final UserService userService;
     private final DepositService depositService;
 
-    @GetMapping("/{tgid}")
-    public List<GetDepositDto> getAllTransactionsFromUser(@PathVariable String tgid) {
-        return depositService.findAllTransactionsByLogin(tgid);
+    @GetMapping
+    public List<GetDepositDto> getAllTransactionsFromUser(Authentication authentication) {
+        return depositService.findAllTransactionsByLogin(authentication.getName());
     }
 
     @PostMapping("/getlink")

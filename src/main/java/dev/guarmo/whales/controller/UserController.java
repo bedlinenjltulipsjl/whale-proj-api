@@ -1,16 +1,15 @@
 package dev.guarmo.whales.controller;
 
 import dev.guarmo.whales.model.user.RoleStatus;
-import dev.guarmo.whales.model.user.dto.GetContentWithoutHistoryUserDto;
-import dev.guarmo.whales.model.user.dto.GetUserCredentialsDto;
-import dev.guarmo.whales.model.user.dto.GetUserWithReferralsDto;
-import dev.guarmo.whales.model.user.dto.PostUserDto;
-import dev.guarmo.whales.service.DepositService;
+import dev.guarmo.whales.model.user.dto.*;
+import dev.guarmo.whales.service.AllTransactionService;
 import dev.guarmo.whales.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,11 +18,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-    private final DepositService depositService;
+    private final AllTransactionService allTransactionService;
 
-    @GetMapping("/reflink/{userTelegramId}")
-    public String generateReferralLinkForUser(@PathVariable String userTelegramId) {
-        return userService.generateRefLinkForUser(userTelegramId);
+    @GetMapping("/reflink")
+    public String generateReferralLinkForUser(Authentication authentication) {
+        return userService.generateRefLinkForUser(authentication.getName());
     }
 
     @PostMapping("/register")
@@ -31,13 +30,20 @@ public class UserController {
         return userService.addUser(postUserDto, RoleStatus.USER);
     }
 
-    @GetMapping("/reftree/{tgid}")
-    public GetUserWithReferralsDto getReferralsTree(@PathVariable String tgid) {
-        return userService.getFourLevelsReferralTree(tgid);
+    @GetMapping("/reftree")
+    public GetFullDto getReferralsTree(Authentication authentication) {
+        return userService.getFourLevelsReferralTree(authentication.getName());
     }
 
     @GetMapping("/by-token")
-    public GetContentWithoutHistoryUserDto getContentUserDtoByTgId(Authentication authentication) {
-        return userService.findByLogin(authentication.getName());
+    public GetFullDto getContentUserDtoByTgId(Authentication authentication) {
+        GetFullDto fullDtoByLogin = userService.findFullDtoByLogin(authentication.getName());
+        fullDtoByLogin.setTransactions(allTransactionService.getAllTypesOfTransactions(authentication.getName()));
+        return fullDtoByLogin;
     }
+
+//    @GetMapping("/top")
+//    public GetTopUserDto getContentUserDtoByTgId() {
+//        return userService.getTopTen();
+//    }
 }

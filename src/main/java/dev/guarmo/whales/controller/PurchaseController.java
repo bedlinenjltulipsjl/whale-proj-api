@@ -4,6 +4,7 @@ import dev.guarmo.whales.model.transaction.purchase.dto.GetPurchaseDto;
 import dev.guarmo.whales.model.transaction.purchase.dto.PostPurchaseDto;
 import dev.guarmo.whales.service.PurchaseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -13,13 +14,13 @@ import java.util.List;
 public class PurchaseController {
     private final PurchaseService purchaseService;
 
-    @GetMapping("/{tgid}")
-    public List<GetPurchaseDto> getPurchaseDtoList(@PathVariable String tgid) {
-        return purchaseService.getPurchaseDtoList(tgid);
+    @GetMapping
+    public List<GetPurchaseDto> getPurchaseDtoList(Authentication authentication) {
+        return purchaseService.getPurchaseDtoList(authentication.getName());
     }
 
-    @PostMapping("/{tgid}")
-    public GetPurchaseDto addPurchaseToUser(@RequestBody PostPurchaseDto purchase, @PathVariable String tgid) {
-        return purchaseService.addPurchaseToUser(purchase, tgid);
+    @PostMapping
+    public GetPurchaseDto addPurchaseToUser(@RequestBody PostPurchaseDto purchase, Authentication authentication) {
+        return purchaseService.addPurchaseToUser(purchase, authentication.getName());
     }
 }

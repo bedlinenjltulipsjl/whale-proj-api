@@ -1,5 +1,6 @@
 package dev.guarmo.whales.model.transaction.purchase;
 
+import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.transaction.PayTransaction;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -11,9 +12,6 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class Purchase extends PayTransaction {
-    private Double purchaseAmount;
     private String description;
-    @Column(updatable = false)
-    @CreationTimestamp
-    private LocalDateTime createdAt;
+    private InvestModelLevel purchasedModel;
 }

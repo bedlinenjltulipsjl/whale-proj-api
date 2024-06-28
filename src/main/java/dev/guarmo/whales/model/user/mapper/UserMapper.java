@@ -51,32 +51,37 @@ public interface UserMapper {
         dto.setIncomeIds(incomeIds);
     }
 
-    @Mapping(target = "bottomReferral", ignore = true)
+    @Mapping(target = "bottomReferrals", ignore = true)
     @Mapping(target = "treeLevel", ignore = true)
-    GetUserWithReferralsDto toGetWithReferralsDto(UserCredentials user);
+//    @Mapping(target = "transactions", source = "login", qualifiedByName = "mapTransactionsToUser")
+    GetFullDto toFullGetDto(UserCredentials user);
 
     @AfterMapping
-    default void mapReferralsAfterMapping(@MappingTarget GetUserWithReferralsDto dto, UserCredentials model) {
+    default void mapReferralsAfterMapping(@MappingTarget GetFullDto dto, UserCredentials model) {
         mapReferrals(dto, model, 0);
     }
 
-    default void mapReferrals(GetUserWithReferralsDto dto, UserCredentials model, int level) {
+    default void mapReferrals(GetFullDto dto, UserCredentials model, int level) {
         dto.setTreeLevel(level);
 
         // Sets recursion basis (how deep fetch referrals)
-        if (level >= 2) {
-            dto.setBottomReferral(Collections.emptyList());
+        if (level >= 3) {
+            dto.setBottomReferrals(Collections.emptyList());
             return;
         }
 
-        List<GetUserWithReferralsDto> referrals = model.getBottomReferrals()
+        List<GetFullDto> referrals = model.getBottomReferrals()
                 .stream()
                 .map(referral -> {
-                    GetUserWithReferralsDto referralDto = toGetWithReferralsDto(referral);
+                    GetFullDto referralDto = toFullGetDto(referral);
                     mapReferrals(referralDto, referral, level + 1);
                     return referralDto;
                 })
                 .collect(Collectors.toList());
-        dto.setBottomReferral(referrals);
+        dto.setBottomReferrals(referrals);
     }
+
+    @Mapping(target = "investedAmount", source = "login", qualifiedByName = "getInvestedAmount")
+    @Mapping(target = "earnedAmount", source = "login", qualifiedByName = "getEarnedAmount")
+    GetTopUserDto toGetTopUserDto(UserCredentials user);
 }

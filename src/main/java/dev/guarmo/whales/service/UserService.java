@@ -3,10 +3,7 @@ package dev.guarmo.whales.service;
 import dev.guarmo.whales.model.transaction.deposit.mapper.DepositMapper;
 import dev.guarmo.whales.model.user.RoleStatus;
 import dev.guarmo.whales.model.user.UserCredentials;
-import dev.guarmo.whales.model.user.dto.GetContentWithoutHistoryUserDto;
-import dev.guarmo.whales.model.user.dto.GetUserCredentialsDto;
-import dev.guarmo.whales.model.user.dto.GetUserWithReferralsDto;
-import dev.guarmo.whales.model.user.dto.PostUserDto;
+import dev.guarmo.whales.model.user.dto.*;
 import dev.guarmo.whales.model.user.mapper.UserMapper;
 import dev.guarmo.whales.repository.UserCredentialsRepo;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +20,6 @@ public class UserService {
     private final UserCredentialsRepo repository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
-    private final DepositMapper depositMapper;
     private final UserCredentialsRepo userCredentialsRepository;
     @Value("${bot.link}")
     private String botLink;
@@ -59,8 +55,17 @@ public class UserService {
         return userCredentialsRepository.findByLogin(tgid).orElseThrow();
     }
 
-    public GetUserWithReferralsDto getFourLevelsReferralTree(String tgid) {
+    public GetFullDto getFourLevelsReferralTree(String tgid) {
         UserCredentials userCredentials = userCredentialsRepository.findByLogin(tgid).orElseThrow();
-        return userMapper.toGetWithReferralsDto(userCredentials);
+        return userMapper.toFullGetDto(userCredentials);
     }
+
+    public GetFullDto findFullDtoByLogin(String name) {
+        return userMapper.toFullGetDto(findByLoginModel(name));
+    }
+
+//    public GetTopUserDto getTopTen() {
+//        userCredentialsRepository.find
+//        userMapper.toGetTopUserDto()
+//    }
 }
