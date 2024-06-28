@@ -69,13 +69,12 @@ public class UserService {
     }
 
     public List<GetTopUserDto> getTopTen() {
-        Pageable topTen = PageRequest.of(0, 10);
+        Pageable topTen = PageRequest.of(0, 12);
         Page<UserCredentials> resultPage = userCredentialsRepository.findTopByMaxSumOfIncomes(topTen);
         List<UserCredentials> content = resultPage.getContent();
-        List<GetTopUserDto> contentMapped = content
+        return content
                 .stream()
                 .map(userMapper::toGetTopUserDto)
                 .toList();
-        return null;
     }
 }

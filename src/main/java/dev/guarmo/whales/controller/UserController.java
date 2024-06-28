@@ -43,8 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/top")
-    public GetTopUserDto getContentUserDtoByTgId() {
-        List<GetTopUserDto> topTen = userService.getTopTen();
-        return null;
+    public List<GetTopUserDto> getContentUserDtoByTgId() {
+        return userService.getTopTen();
     }
 }
