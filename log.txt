@@ -7083,3 +7083,647 @@ java.net.UnknownHostException: No such host is known (api.telegram.org)
 2024-06-28T09:57:35.035+03:00  INFO 58348 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
 2024-06-28T09:57:35.296+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6f55aef7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@69c7fe78, org.springframework.security.web.context.SecurityContextHolderFilter@54d62c35, org.springframework.security.web.header.HeaderWriterFilter@2d85a4c7, org.springframework.web.filter.CorsFilter@1ffe7c42, org.springframework.security.web.authentication.logout.LogoutFilter@47fb30ca, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@70720b78, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3c4940d2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ed94e6a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@996126b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f72aaed, org.springframework.security.web.session.SessionManagementFilter@d20e900, org.springframework.security.web.access.ExceptionTranslationFilter@265361a, org.springframework.security.web.access.intercept.AuthorizationFilter@31fc1b6e]
 2024-06-28T09:57:35.585+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-06-28T10:07:14.998+03:00  INFO 40992 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Starting Application using Java 17.0.11 with PID 40992 (D:\Work\Java\whale-api-v2\target\classes started by bohdan in D:\Work\Java\whale-api-v2)
+2024-06-28T10:07:15.001+03:00  INFO 40992 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : No active profile set, falling back to 1 default profile: "default"
+2024-06-28T10:07:15.868+03:00  INFO 40992 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-28T10:07:16.000+03:00  INFO 40992 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 6 JPA repository interfaces.
+2024-06-28T10:07:16.430+03:00  INFO 40992 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6028 (http)
+2024-06-28T10:07:16.437+03:00  INFO 40992 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-28T10:07:16.438+03:00  INFO 40992 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-28T10:07:16.488+03:00  INFO 40992 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-28T10:07:16.489+03:00  INFO 40992 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1447 ms
+2024-06-28T10:07:16.604+03:00  INFO 40992 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-28T10:07:16.633+03:00  INFO 40992 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-28T10:07:16.663+03:00  INFO 40992 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-28T10:07:16.860+03:00  INFO 40992 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-28T10:07:16.877+03:00  INFO 40992 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-28T10:07:18.136+03:00  INFO 40992 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@74431832
+2024-06-28T10:07:18.141+03:00  INFO 40992 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-28T10:07:18.384+03:00  WARN 40992 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-28T10:07:19.168+03:00  INFO 40992 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-28T10:07:22.163+03:00  INFO 40992 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:07:22.352+03:00  INFO 40992 --- [jwt-token-server] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-28T10:07:22.938+03:00  WARN 40992 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-28T10:07:22.953+03:00  INFO 40992 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-28T10:07:23.256+03:00  INFO 40992 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3938e876, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@70b2819f, org.springframework.security.web.context.SecurityContextHolderFilter@4a58d05d, org.springframework.security.web.header.HeaderWriterFilter@43f670f3, org.springframework.web.filter.CorsFilter@65dac812, org.springframework.security.web.authentication.logout.LogoutFilter@5672920, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@74c74c99, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5068a2b1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79c514e4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3927de0e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3619ecd, org.springframework.security.web.session.SessionManagementFilter@5aeaee3, org.springframework.security.web.access.ExceptionTranslationFilter@150eab74, org.springframework.security.web.access.intercept.AuthorizationFilter@3d980928]
+2024-06-28T10:07:23.562+03:00  INFO 40992 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-06-28T10:07:23.963+03:00  INFO 40992 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Started Application in 9.258 seconds (process running for 9.632)
+2024-06-28T10:08:46.993+03:00  INFO 40992 --- [jwt-token-server] [http-nio-6028-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-28T10:08:46.994+03:00  INFO 40992 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-28T10:08:46.995+03:00  INFO 40992 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-06-28T10:11:49.583+03:00  INFO 40992 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:11:49.584+03:00  INFO 40992 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-28T10:11:52.590+03:00  INFO 66788 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Starting Application using Java 17.0.11 with PID 66788 (D:\Work\Java\whale-api-v2\target\classes started by bohdan in D:\Work\Java\whale-api-v2)
+2024-06-28T10:11:52.591+03:00  INFO 66788 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : No active profile set, falling back to 1 default profile: "default"
+2024-06-28T10:11:53.013+03:00  INFO 66788 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-28T10:11:53.062+03:00  INFO 66788 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 6 JPA repository interfaces.
+2024-06-28T10:11:53.416+03:00  INFO 66788 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6028 (http)
+2024-06-28T10:11:53.423+03:00  INFO 66788 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-28T10:11:53.423+03:00  INFO 66788 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-28T10:11:53.462+03:00  INFO 66788 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-28T10:11:53.462+03:00  INFO 66788 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 845 ms
+2024-06-28T10:11:53.562+03:00  INFO 66788 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-28T10:11:53.592+03:00  INFO 66788 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-28T10:11:53.611+03:00  INFO 66788 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-28T10:11:53.806+03:00  INFO 66788 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-28T10:11:53.827+03:00  INFO 66788 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-28T10:11:54.764+03:00  INFO 66788 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b01897f
+2024-06-28T10:11:54.766+03:00  INFO 66788 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-28T10:11:54.939+03:00  WARN 66788 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-28T10:11:55.574+03:00  INFO 66788 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-28T10:11:58.226+03:00  INFO 66788 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:11:58.414+03:00  INFO 66788 --- [jwt-token-server] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-28T10:11:58.816+03:00  WARN 66788 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-28T10:11:58.835+03:00  INFO 66788 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-28T10:11:59.034+03:00  INFO 66788 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5cdb7b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3dcc59f5, org.springframework.security.web.context.SecurityContextHolderFilter@5ec10ab1, org.springframework.security.web.header.HeaderWriterFilter@28ec35e3, org.springframework.web.filter.CorsFilter@16b1dee7, org.springframework.security.web.authentication.logout.LogoutFilter@33822750, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@156322ce, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@625ae6d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@63f88d35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@635b3ec7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@690337df, org.springframework.security.web.session.SessionManagementFilter@17a5cb99, org.springframework.security.web.access.ExceptionTranslationFilter@2c95cb24, org.springframework.security.web.access.intercept.AuthorizationFilter@69554e5a]
+2024-06-28T10:11:59.239+03:00  INFO 66788 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-06-28T10:11:59.624+03:00  INFO 66788 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Started Application in 7.29 seconds (process running for 7.746)
+2024-06-28T10:12:07.523+03:00  INFO 66788 --- [jwt-token-server] [http-nio-6028-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-28T10:12:07.524+03:00  INFO 66788 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-28T10:12:07.526+03:00  INFO 66788 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-28T10:12:37.364+03:00  INFO 66788 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:12:37.365+03:00  INFO 66788 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-28T10:13:27.687+03:00  INFO 69848 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Starting Application using Java 17.0.11 with PID 69848 (D:\Work\Java\whale-api-v2\target\classes started by bohdan in D:\Work\Java\whale-api-v2)
+2024-06-28T10:13:27.688+03:00  INFO 69848 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : No active profile set, falling back to 1 default profile: "default"
+2024-06-28T10:13:28.105+03:00  INFO 69848 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-28T10:13:28.154+03:00  INFO 69848 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 6 JPA repository interfaces.
+2024-06-28T10:13:28.498+03:00  INFO 69848 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6028 (http)
+2024-06-28T10:13:28.506+03:00  INFO 69848 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-28T10:13:28.506+03:00  INFO 69848 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-28T10:13:28.543+03:00  INFO 69848 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-28T10:13:28.543+03:00  INFO 69848 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 829 ms
+2024-06-28T10:13:28.644+03:00  INFO 69848 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-28T10:13:28.673+03:00  INFO 69848 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-28T10:13:28.693+03:00  INFO 69848 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-28T10:13:28.882+03:00  INFO 69848 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-28T10:13:28.898+03:00  INFO 69848 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-28T10:13:29.792+03:00  INFO 69848 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c5a2d5
+2024-06-28T10:13:29.794+03:00  INFO 69848 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-28T10:13:29.970+03:00  WARN 69848 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-28T10:13:30.594+03:00  INFO 69848 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-28T10:13:33.123+03:00  INFO 69848 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:13:33.293+03:00  INFO 69848 --- [jwt-token-server] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-28T10:13:33.769+03:00  WARN 69848 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-28T10:13:33.785+03:00  INFO 69848 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-28T10:13:33.992+03:00  INFO 69848 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@27d6ff8c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@105c253a, org.springframework.security.web.context.SecurityContextHolderFilter@33c976b1, org.springframework.security.web.header.HeaderWriterFilter@5dcbdcb9, org.springframework.web.filter.CorsFilter@156322ce, org.springframework.security.web.authentication.logout.LogoutFilter@6142b9dd, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@7ceb432c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4c02f50, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75f3c0c9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7de4bd8f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@546f0f36, org.springframework.security.web.session.SessionManagementFilter@25874884, org.springframework.security.web.access.ExceptionTranslationFilter@142422a4, org.springframework.security.web.access.intercept.AuthorizationFilter@46763680]
+2024-06-28T10:13:34.196+03:00  INFO 69848 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-06-28T10:13:34.516+03:00  INFO 69848 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Started Application in 7.173 seconds (process running for 7.698)
+2024-06-28T10:13:39.802+03:00  INFO 69848 --- [jwt-token-server] [http-nio-6028-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-28T10:13:39.802+03:00  INFO 69848 --- [jwt-token-server] [http-nio-6028-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-28T10:13:39.804+03:00  INFO 69848 --- [jwt-token-server] [http-nio-6028-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-28T10:14:35.957+03:00  WARN 69848 --- [jwt-token-server] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m6s60ms946µs600ns).
+2024-06-28T10:15:26.175+03:00  WARN 69848 --- [jwt-token-server] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50s218ms110µs300ns).
+2024-06-28T10:15:26.178+03:00 ERROR 69848 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:15:26.233+03:00  INFO 69848 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:15:26.236+03:00  INFO 69848 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-28T10:15:31.004+03:00  INFO 58348 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Starting Application using Java 17.0.11 with PID 58348 (D:\Work\Java\whale-api-v2\target\classes started by bohdan in D:\Work\Java\whale-api-v2)
+2024-06-28T10:15:31.006+03:00  INFO 58348 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : No active profile set, falling back to 1 default profile: "default"
+2024-06-28T10:15:31.402+03:00  INFO 58348 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-28T10:15:31.446+03:00  INFO 58348 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 6 JPA repository interfaces.
+2024-06-28T10:15:31.750+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6028 (http)
+2024-06-28T10:15:31.756+03:00  INFO 58348 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-28T10:15:31.756+03:00  INFO 58348 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-06-28T10:15:31.790+03:00  INFO 58348 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-06-28T10:15:31.791+03:00  INFO 58348 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 758 ms
+2024-06-28T10:15:31.879+03:00  INFO 58348 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-28T10:15:31.905+03:00  INFO 58348 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-28T10:15:31.921+03:00  INFO 58348 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-28T10:15:32.078+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-28T10:15:32.092+03:00  INFO 58348 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-28T10:15:33.100+03:00  INFO 58348 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1fc3df43
+2024-06-28T10:15:33.102+03:00  INFO 58348 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-28T10:15:33.306+03:00  WARN 58348 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-28T10:15:33.843+03:00  INFO 58348 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-06-28T10:15:36.752+03:00  INFO 58348 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:15:36.886+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-28T10:15:37.239+03:00  WARN 58348 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-28T10:15:37.252+03:00  INFO 58348 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-06-28T10:15:37.443+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c6b08a5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@54980154, org.springframework.security.web.context.SecurityContextHolderFilter@610640e3, org.springframework.security.web.header.HeaderWriterFilter@157002b7, org.springframework.web.filter.CorsFilter@25874884, org.springframework.security.web.authentication.logout.LogoutFilter@10e542f3, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@2cb3bc0e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5f05cd7e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2be9425f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@362d91ef, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7335414e, org.springframework.security.web.session.SessionManagementFilter@6311640d, org.springframework.security.web.access.ExceptionTranslationFilter@320bfc61, org.springframework.security.web.access.intercept.AuthorizationFilter@377bc8da]
+2024-06-28T10:15:37.613+03:00  INFO 58348 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-06-28T10:15:37.941+03:00  INFO 58348 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Started Application in 7.166 seconds (process running for 7.508)
+2024-06-28T10:15:41.862+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:15:45.992+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:15:50.163+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:15:54.273+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:15:58.444+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:02.639+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:06.883+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:11.369+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:15.517+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:19.667+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:23.862+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:28.017+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:32.230+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:36.396+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:40.532+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:44.664+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:48.829+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:53.106+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:16:57.239+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:01.396+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:05.520+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:09.649+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:13.777+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:17.914+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:22.123+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:26.240+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:30.004+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-28T10:17:30.006+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-28T10:17:30.009+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-06-28T10:17:30.358+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:34.487+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:38.633+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:42.770+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:46.913+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:51.037+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:55.154+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:17:59.281+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:03.557+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:04.500+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-4] d.g.w.c.InstantPayNotifyController       : Received Payment Notification: GetDepositDto(id=11, transactionId=123123, transactionAmount=23.0, address=35NjwZg8T4F12ESdEo3rQeYQ8ZiTyDYoTJ, destTag=hello, label=u311, currency=BTC, status=completed, blockchainConfirmations=1, fee=0.0001, blockchainHash=72648cefcc47b4371f28dc3328bc863918913eebf81b40d4a97d577b96c1ce53, createdAt=2024-06-28T10:18:00.010415)
+2024-06-28T10:18:04.500+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-4] d.g.w.c.InstantPayNotifyController       : Saved this bonus to this user: [GetIncomeDto(id=7, transactionAmount=1.1500000000000001, createdAt=2024-06-28T10:18:01.070350, incomeCausedByUserTgName=g311, incomeSendToTgName=g31), GetIncomeDto(id=8, transactionAmount=0.69, createdAt=2024-06-28T10:18:01.909045, incomeCausedByUserTgName=g311, incomeSendToTgName=g3), GetIncomeDto(id=9, transactionAmount=0.46, createdAt=2024-06-28T10:18:02.747331, incomeCausedByUserTgName=g311, incomeSendToTgName=g1)]
+2024-06-28T10:18:07.666+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:11.822+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:15.945+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:20.074+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:24.199+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:28.318+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:32.533+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:36.671+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:40.811+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:44.933+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:49.050+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:51.770+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-5] d.g.w.c.InstantPayNotifyController       : Received Payment Notification: GetDepositDto(id=12, transactionId=123123, transactionAmount=12.0, address=35NjwZg8T4F12ESdEo3rQeYQ8ZiTyDYoTJ, destTag=hello, label=u311, currency=BTC, status=completed, blockchainConfirmations=1, fee=0.0001, blockchainHash=72648cefcc47b4371f28dc3328bc863918913eebf81b40d4a97d577b96c1ce53, createdAt=2024-06-28T10:18:46.989014)
+2024-06-28T10:18:51.771+03:00  INFO 58348 --- [jwt-token-server] [http-nio-6028-exec-5] d.g.w.c.InstantPayNotifyController       : Saved this bonus to this user: [GetIncomeDto(id=10, transactionAmount=0.6000000000000001, createdAt=2024-06-28T10:18:48.229860, incomeCausedByUserTgName=g311, incomeSendToTgName=g31), GetIncomeDto(id=11, transactionAmount=0.36, createdAt=2024-06-28T10:18:49.208505, incomeCausedByUserTgName=g311, incomeSendToTgName=g3), GetIncomeDto(id=12, transactionAmount=0.24, createdAt=2024-06-28T10:18:50.168760, incomeCausedByUserTgName=g311, incomeSendToTgName=g1)]
+2024-06-28T10:18:53.192+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:18:57.307+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:01.450+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:05.560+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:09.688+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:14.001+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:18.131+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:22.244+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:26.384+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:30.509+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:34.666+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:38.800+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:43.000+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:47.120+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:51.240+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:55.364+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:19:59.482+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:03.613+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:07.758+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:11.890+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:16.003+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:20.138+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:24.394+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:28.537+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:32.670+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:36.811+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:40.951+03:00 ERROR 58348 --- [jwt-token-server] [Channel Access Payment Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-06-28T10:20:44.136+03:00  INFO 58348 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-28T10:20:44.138+03:00  INFO 58348 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...

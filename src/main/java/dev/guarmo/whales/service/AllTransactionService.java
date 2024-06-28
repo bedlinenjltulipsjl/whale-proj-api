@@ -52,8 +52,7 @@ public class AllTransactionService {
         allTransactions.addAll(deposits);
         allTransactions.addAll(incomes);
         allTransactions.addAll(purchases);
-        allTransactions.sort((o1, o2) -> o1.getCreatedAt().compareTo(o2.getCreatedAt()));
-
+        allTransactions.sort((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt()));
         return allTransactions;
     }
 }
