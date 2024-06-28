@@ -1,17 +1,15 @@
-package dev.guarmo.whales.model.investmodel;
+package dev.guarmo.whales.model.investmodel.dto;
 
-import jakarta.persistence.*;
+import dev.guarmo.whales.model.investmodel.InvestModelLevel;
+import dev.guarmo.whales.model.investmodel.InvestModelStatus;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
+
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
-@Entity
-public class InvestModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class GetInvestModel {
     private String id;
     private String naming;
     private Double priceAmount;
@@ -19,9 +17,6 @@ public class InvestModel {
     private Integer cyclesBeforeFreezeCount;
     private InvestModelStatus investModelStatus;
     private InvestModelLevel investModelLevel;
-    @Column(updatable = false)
     private LocalDateTime unlockDate;
-    @Column(updatable = false)
-    @CreationTimestamp
     private LocalDateTime createdAt;
 }

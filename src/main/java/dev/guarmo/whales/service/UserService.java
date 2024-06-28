@@ -1,21 +1,18 @@
 package dev.guarmo.whales.service;
 
-import dev.guarmo.whales.model.transaction.deposit.mapper.DepositMapper;
+import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.user.RoleStatus;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.model.user.dto.*;
 import dev.guarmo.whales.model.user.mapper.UserMapper;
 import dev.guarmo.whales.repository.UserCredentialsRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -25,17 +22,22 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final UserCredentialsRepo userCredentialsRepository;
+    private final InvestModelService investModelService;
 
     public GetUserCredentialsDto addUser(PostUserDto user, RoleStatus role) {
         UserCredentials model = userMapper.toModel(user);
         model.setRole(role);
         model.setPassword(passwordEncoder.encode(user.getPassword()));
-        UserCredentials save = repository.save(model);
 
+        List<InvestModel> generatedInvestModels =
+                investModelService.generateDefaultInvestModels();
+        model.setInvestModels(generatedInvestModels);
+
+        UserCredentials save = repository.save(model);
         UserCredentials upperReferral = model.getUpperReferral();
         upperReferral.getBottomReferrals().add(save);
 
-        UserCredentials save1 = repository.save(upperReferral);
+        repository.save(upperReferral);
         return userMapper.toGetCredentialsDto(save);
     }
 

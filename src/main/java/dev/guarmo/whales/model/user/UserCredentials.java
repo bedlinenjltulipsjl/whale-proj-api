@@ -1,5 +1,6 @@
 package dev.guarmo.whales.model.user;
 
+import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.transaction.income.Income;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
@@ -44,10 +45,13 @@ public class UserCredentials implements UserDetails {
     private List<Income> incomes;
     @OneToMany
     private List<Purchase> purchases;
-    @ManyToOne
-    private UserCredentials upperReferral;
+
+    @OneToMany
+    private List<InvestModel> investModels;
     @OneToMany
     private List<UserCredentials> bottomReferrals;
+    @ManyToOne
+    private UserCredentials upperReferral;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
