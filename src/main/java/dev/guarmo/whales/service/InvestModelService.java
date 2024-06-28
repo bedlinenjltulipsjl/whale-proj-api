@@ -1,5 +1,6 @@
 package dev.guarmo.whales.service;
 
+import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
@@ -9,6 +10,7 @@ import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.purchase.dto.PostPurchaseDto;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.repository.InvestModelRepo;
+import dev.guarmo.whales.repository.UserCredentialsRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,8 +25,9 @@ import java.util.SplittableRandom;
 @Slf4j
 public class InvestModelService {
     private final InvestModelRepo investModelRepo;
-    private final UserService userService;
     private final PurchaseService purchaseService;
+    private final UserHelper userHelper;
+    private final UserCredentialsRepo userCredentialsRepo;
 
     public List<InvestModel> generateDefaultInvestModels() {
         List<InvestModel> investModels = getInvestModelsList();
@@ -58,13 +61,13 @@ public class InvestModelService {
         investModel.setInvestModelLevel(InvestModelLevel.values()[i]); // Assigning levels sequentially
 
         // Assigning statuses in increasing order from 1 to 16
-        investModel.setInvestModelStatus(InvestModelStatus.BOUGHT);
+        investModel.setInvestModelStatus(InvestModelStatus.AVAILABLE);
         return investModel;
     }
 
     @Transactional
     public GetInvestModel addInvestModel(PostInvestModel investModel, String login) {
-        UserCredentials model = userService.findByLoginModel(login);
+        UserCredentials model = userCredentialsRepo.findByLogin(login).orElseThrow();
         InvestModel gotModelFromUser = model.getInvestModels().stream().filter(im -> im.getInvestModelLevel() == investModel.getInvestModelLevel()).findFirst().orElseThrow();
         if (gotModelFromUser.getInvestModelStatus().equals(InvestModelStatus.AVAILABLE)) {
             PostPurchaseDto postPurchaseDto = new PostPurchaseDto();
@@ -78,6 +81,9 @@ public class InvestModelService {
         log.error("Invest Model wrong status (UNABLE TO PURCHASE): {}", gotModelFromUser);
         throw new RuntimeException("Invest Model wrong status (UNABLE TO PURCHASE): " + gotModelFromUser);
     }
+
+//    @Transactional
+
 
 //    public List<GetInvestModel> getAllInvestTables(String name) {
 //
