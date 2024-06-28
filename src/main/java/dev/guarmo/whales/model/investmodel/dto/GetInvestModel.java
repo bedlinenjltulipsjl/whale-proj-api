@@ -14,7 +14,8 @@ public class GetInvestModel {
     private String naming;
     private Double priceAmount;
     private Integer cyclesCount;
-    private Integer cyclesBeforeFreezeCount;
+    private Integer cyclesBeforeFreezeNumber;
+    private Integer cyclesBeforeFinishedNumber;
     private InvestModelStatus investModelStatus;
     private InvestModelLevel investModelLevel;
     private LocalDateTime unlockDate;

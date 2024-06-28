@@ -16,7 +16,8 @@ public class InvestModel {
     private String naming;
     private Double priceAmount;
     private Integer cyclesCount;
-    private Integer cyclesBeforeFreezeCount;
+    private Integer cyclesBeforeFreezeNumber;
+    private Integer cyclesBeforeFinishedNumber;
     private InvestModelStatus investModelStatus;
     private InvestModelLevel investModelLevel;
     @Column(updatable = false)

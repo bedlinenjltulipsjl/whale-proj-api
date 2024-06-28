@@ -42,7 +42,8 @@ public class InvestModelService {
         investModel.setNaming("InvestModel " + i);
         investModel.setPriceAmount(100.0 * (i + 1)); // Example price calculation
         investModel.setCyclesCount(i + 1); // Example cycles count
-        investModel.setCyclesBeforeFreezeCount(i + 2); // Example cycles before freeze count
+        investModel.setCyclesBeforeFinishedNumber(i + 19); // Example cycles before freeze count
+        investModel.setCyclesBeforeFreezeNumber(i + 4); // Example cycles before freeze count
         investModel.setInvestModelLevel(InvestModelLevel.values()[i]); // Assigning levels sequentially
 
         // Assigning statuses in increasing order from 1 to 16
