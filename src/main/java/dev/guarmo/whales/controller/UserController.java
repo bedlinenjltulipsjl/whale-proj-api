@@ -42,8 +42,9 @@ public class UserController {
         return fullDtoByLogin;
     }
 
-//    @GetMapping("/top")
-//    public GetTopUserDto getContentUserDtoByTgId() {
-//        return userService.getTopTen();
-//    }
+    @GetMapping("/top")
+    public GetTopUserDto getContentUserDtoByTgId() {
+        List<GetTopUserDto> topTen = userService.getTopTen();
+        return null;
+    }
 }

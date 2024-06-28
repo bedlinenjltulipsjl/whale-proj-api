@@ -8,11 +8,15 @@ import dev.guarmo.whales.model.user.mapper.UserMapper;
 import dev.guarmo.whales.repository.UserCredentialsRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -64,8 +68,14 @@ public class UserService {
         return userMapper.toFullGetDto(findByLoginModel(name));
     }
 
-//    public GetTopUserDto getTopTen() {
-//        userCredentialsRepository.find
-//        userMapper.toGetTopUserDto()
-//    }
+    public List<GetTopUserDto> getTopTen() {
+        Pageable topTen = PageRequest.of(0, 10);
+        Page<UserCredentials> resultPage = userCredentialsRepository.findTopByMaxSumOfIncomes(topTen);
+        List<UserCredentials> content = resultPage.getContent();
+        List<GetTopUserDto> contentMapped = content
+                .stream()
+                .map(userMapper::toGetTopUserDto)
+                .toList();
+        return null;
+    }
 }
