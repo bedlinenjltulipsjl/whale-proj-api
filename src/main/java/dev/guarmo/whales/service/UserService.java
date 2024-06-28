@@ -32,6 +32,7 @@ public class UserService {
         List<InvestModel> generatedInvestModels =
                 investModelService.generateDefaultInvestModels();
         model.setInvestModels(generatedInvestModels);
+        model.setBalanceAmount(1000);
 
         UserCredentials save = repository.save(model);
         UserCredentials upperReferral = model.getUpperReferral();

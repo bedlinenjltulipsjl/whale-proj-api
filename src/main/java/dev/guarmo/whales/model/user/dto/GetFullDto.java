@@ -16,6 +16,7 @@ public class GetFullDto {
     private String username;
     private Integer treeLevel;
     private String reflink;
+    private Double balanceAmount;
     private List<GetInvestModel> investModels;
     private List<GetFullDto> bottomReferrals;
     private List<GetTransaction> transactions;
