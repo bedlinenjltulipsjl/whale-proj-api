@@ -10,7 +10,7 @@ public class GetTopUserDto {
     private String id;
     private String name;
     private String username;
-    private String investedAmount;
-    private String earnedAmount;
+    private Double investedAmount;
+    private Double earnedAmount;
     private LocalDateTime createdAt;
 }
