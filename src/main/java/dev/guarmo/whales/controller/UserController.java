@@ -1,5 +1,6 @@
 package dev.guarmo.whales.controller;
 
+import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.user.RoleStatus;
 import dev.guarmo.whales.model.user.dto.*;
 import dev.guarmo.whales.service.AllTransactionService;
@@ -19,10 +20,11 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final AllTransactionService allTransactionService;
+    private final UserHelper userHelper;
 
     @GetMapping("/reflink")
     public String generateReferralLinkForUser(Authentication authentication) {
-        return userService.generateRefLinkForUser(authentication.getName());
+        return userHelper.generateRefLinkForUser(authentication.getName());
     }
 
     @PostMapping("/register")

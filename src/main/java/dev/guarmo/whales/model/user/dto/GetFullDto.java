@@ -13,6 +13,7 @@ public class GetFullDto {
     private String name;
     private String username;
     private Integer treeLevel;
+    private String reflink;
     private List<GetFullDto> bottomReferrals;
     private List<GetTransaction> transactions;
 }

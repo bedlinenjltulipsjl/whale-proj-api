@@ -25,8 +25,6 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
     private final UserCredentialsRepo userCredentialsRepository;
-    @Value("${bot.link}")
-    private String botLink;
 
     public GetUserCredentialsDto addUser(PostUserDto user, RoleStatus role) {
         UserCredentials model = userMapper.toModel(user);
@@ -44,10 +42,6 @@ public class UserService {
     public GetUserCredentialsDto getByCredentialsByLogin(String login) {
         UserCredentials userCredentials = repository.findByLogin(login).orElseThrow();
         return userMapper.toGetCredentialsDto(userCredentials);
-    }
-
-    public String generateRefLinkForUser(String userTelegramId) {
-        return botLink + Base64.getUrlEncoder().encodeToString(userTelegramId.getBytes(StandardCharsets.UTF_8));
     }
 
     public GetContentWithoutHistoryUserDto findByLogin(String tgid) {
