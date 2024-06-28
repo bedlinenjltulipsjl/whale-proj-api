@@ -1,13 +1,13 @@
 package dev.guarmo.whales.model.investmodel;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 @Entity
 public class InvestModel {
     @Id

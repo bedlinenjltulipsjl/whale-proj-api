@@ -12,6 +12,5 @@ public class GetPurchaseDto {
     private Long id;
     private Double transactionAmount;
     private InvestModelLevel purchasedModel;
-    private String description;
     private LocalDateTime createdAt;
 }

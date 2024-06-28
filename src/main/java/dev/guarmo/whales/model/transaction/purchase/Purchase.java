@@ -12,6 +12,5 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class Purchase extends PayTransaction {
-    private String description;
     private InvestModelLevel purchasedModel;
 }

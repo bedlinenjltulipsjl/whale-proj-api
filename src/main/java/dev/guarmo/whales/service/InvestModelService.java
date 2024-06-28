@@ -3,17 +3,28 @@ package dev.guarmo.whales.service;
 import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
+import dev.guarmo.whales.model.investmodel.dto.GetInvestModel;
+import dev.guarmo.whales.model.investmodel.dto.PostInvestModel;
+import dev.guarmo.whales.model.transaction.purchase.Purchase;
+import dev.guarmo.whales.model.transaction.purchase.dto.PostPurchaseDto;
+import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.repository.InvestModelRepo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.SplittableRandom;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class InvestModelService {
     private final InvestModelRepo investModelRepo;
+    private final UserService userService;
+    private final PurchaseService purchaseService;
 
     public List<InvestModel> generateDefaultInvestModels() {
         List<InvestModel> investModels = getInvestModelsList();
@@ -21,9 +32,9 @@ public class InvestModelService {
     }
 
     public List<InvestModel> getInvestModelsList() {
-        InvestModel[] investModels = new InvestModel[16];
+        InvestModel[] investModels = new InvestModel[15];
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 15; i++) {
             investModels[i] = generateInvestModel(i);
         }
 
@@ -50,4 +61,25 @@ public class InvestModelService {
         investModel.setInvestModelStatus(InvestModelStatus.BOUGHT);
         return investModel;
     }
+
+    @Transactional
+    public GetInvestModel addInvestModel(PostInvestModel investModel, String login) {
+        UserCredentials model = userService.findByLoginModel(login);
+        InvestModel gotModelFromUser = model.getInvestModels().stream().filter(im -> im.getInvestModelLevel() == investModel.getInvestModelLevel()).findFirst().orElseThrow();
+        if (gotModelFromUser.getInvestModelStatus().equals(InvestModelStatus.AVAILABLE)) {
+            PostPurchaseDto postPurchaseDto = new PostPurchaseDto();
+            postPurchaseDto.setPurchasedModel(gotModelFromUser.getInvestModelLevel());
+            postPurchaseDto.setTransactionAmount(gotModelFromUser.getPriceAmount());
+            purchaseService.addPurchaseToUser(postPurchaseDto, login);
+
+            gotModelFromUser.setInvestModelStatus(InvestModelStatus.BOUGHT);
+            investModelRepo.save(gotModelFromUser);
+        }
+        log.error("Invest Model wrong status (UNABLE TO PURCHASE): {}", gotModelFromUser);
+        throw new RuntimeException("Invest Model wrong status (UNABLE TO PURCHASE): " + gotModelFromUser);
+    }
+
+//    public List<GetInvestModel> getAllInvestTables(String name) {
+//
+//    }
 }

@@ -9,5 +9,4 @@ import lombok.Setter;
 public class PostPurchaseDto {
     private Double transactionAmount;
     private InvestModelLevel purchasedModel;
-    private String description;
 }
