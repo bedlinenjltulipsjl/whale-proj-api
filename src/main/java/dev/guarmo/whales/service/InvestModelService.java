@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.SplittableRandom;
@@ -58,10 +59,11 @@ public class InvestModelService {
         investModel.setCyclesCount(i + 1); // Example cycles count
         investModel.setCyclesBeforeFinishedNumber(i + 19); // Example cycles before freeze count
         investModel.setCyclesBeforeFreezeNumber(i + 4); // Example cycles before freeze count
+        investModel.setUnlockDate(LocalDateTime.now().minusHours(i)); // Example cycles before freeze count
         investModel.setInvestModelLevel(InvestModelLevel.values()[i]); // Assigning levels sequentially
 
         // Assigning statuses in increasing order from 1 to 16
-        investModel.setInvestModelStatus(InvestModelStatus.AVAILABLE);
+        investModel.setInvestModelStatus(InvestModelStatus.TIMELOCKED);
         return investModel;
     }
 
