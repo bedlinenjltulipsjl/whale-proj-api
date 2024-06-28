@@ -14,10 +14,10 @@ import java.util.List;
 @RequestMapping("/tables")
 public class InvestEntityController {
     private final InvestModelService investModelService;
-    @GetMapping
-    public List<GetInvestModel> buyTable(Authentication authentication) {
-        return investModelService.getAllInvestTables(authentication.getName());
-    }
+//    @GetMapping
+//    public List<GetInvestModel> buyTable(Authentication authentication) {
+//        return investModelService.g(authentication.getName());
+//    }
 
 
     @PostMapping
