@@ -13,9 +13,11 @@ public class Deposit extends PayTransaction {
     private String address;
     private String destTag;
     private String label;
+    private String type;
     private String currency;
     private String status;
     private Integer blockchainConfirmations;
     private String fee;
     private String blockchainHash;
+    private String error;
 }

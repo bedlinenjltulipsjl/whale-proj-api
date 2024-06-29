@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/deposits")
+@CrossOrigin(allowedHeaders = "*")
 public class DepositController {
     private final InvoiceGeneratorService invoiceGeneratorService;
     private final UserService userService;

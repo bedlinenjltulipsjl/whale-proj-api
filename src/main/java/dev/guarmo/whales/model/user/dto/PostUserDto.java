@@ -11,4 +11,5 @@ public class PostUserDto {
     private String name;
     private String username;
     private String referralLogin;
+    private String reflink;
 }

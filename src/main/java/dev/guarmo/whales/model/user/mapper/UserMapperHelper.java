@@ -52,9 +52,4 @@ public class UserMapperHelper {
         UserCredentials userCredentials = userCredentialsRepo.findByLogin(login).orElseThrow();
         return userCredentials.getIncomes().stream().mapToDouble(Income::getTransactionAmount).sum();
     }
-
-    @Named("getReflink")
-    public String getReflink(String login) {
-        return userHelper.generateRefLinkForUser(login);
-    }
 }

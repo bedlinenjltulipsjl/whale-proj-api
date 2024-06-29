@@ -5,6 +5,7 @@ public enum InvestModelStatus {
     FROZEN,
     BOUGHT,
     AVAILABLE,
+    MONEYLOCKED,
     TIMELOCKED,
     LOCKED,
     SPECIALS

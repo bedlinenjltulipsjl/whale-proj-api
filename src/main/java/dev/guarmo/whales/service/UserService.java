@@ -1,6 +1,9 @@
 package dev.guarmo.whales.service;
 
+import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.investmodel.InvestModel;
+import dev.guarmo.whales.model.investmodel.dto.GetInvestModel;
+import dev.guarmo.whales.model.investmodel.mapper.InvestModelMapper;
 import dev.guarmo.whales.model.user.RoleStatus;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.model.user.dto.*;
@@ -13,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -21,8 +25,11 @@ public class UserService {
     private final UserCredentialsRepo repository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
+    private final InvestModelMapper investModelMapper;
     private final UserCredentialsRepo userCredentialsRepository;
     private final InvestModelService investModelService;
+    private final UserHelper userHelper;
+    private final AllTransactionService allTransactionService;
 
     public GetUserCredentialsDto addUser(PostUserDto user, RoleStatus role) {
         UserCredentials model = userMapper.toModel(user);
@@ -52,17 +59,22 @@ public class UserService {
         return userMapper.toGetWithoutHistoryDto(userCredentials);
     }
 
-    public UserCredentials findByLoginModel(String tgid) {
-        return userCredentialsRepository.findByLogin(tgid).orElseThrow();
-    }
-
     public GetFullDto getFourLevelsReferralTree(String tgid) {
         UserCredentials userCredentials = userCredentialsRepository.findByLogin(tgid).orElseThrow();
         return userMapper.toFullGetDto(userCredentials);
     }
 
     public GetFullDto findFullDtoByLogin(String name) {
-        return userMapper.toFullGetDto(findByLoginModel(name));
+        UserCredentials model = userHelper.findByLoginModel(name);
+        GetFullDto fullGetDto = userMapper.toFullGetDto(model);
+        fullGetDto.setTransactions(allTransactionService.getAllTypesOfTransactionsByUser(model));
+
+        List<GetInvestModel> sortedInvestModels = model.getInvestModels().stream()
+                .map(investModelMapper::toGetDto)
+                .sorted(Comparator.comparing(GetInvestModel::getInvestModelLevel))
+                .toList();
+        fullGetDto.setInvestModels(sortedInvestModels);
+        return fullGetDto;
     }
 
     public List<GetTopUserDto> getTopTen() {

@@ -1,5 +1,7 @@
 package dev.guarmo.whales.model.transaction.deposit.mapper;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.guarmo.whales.config.MapperConfig;
 import dev.guarmo.whales.model.transaction.GetTransaction;
 import dev.guarmo.whales.model.transaction.TransactionType;
@@ -28,6 +30,11 @@ public interface DepositMapper {
         notification.setFee(formData.getFirst("fee"));
         notification.setBlockchainHash(formData.getFirst("blockchain_hash"));
         return notification;
+    }
+
+    default PostDepositDto fromJsonToPost(String json) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readValue(json, PostDepositDto.class);
     }
 
     GetDepositDto toGetDto(Deposit user);

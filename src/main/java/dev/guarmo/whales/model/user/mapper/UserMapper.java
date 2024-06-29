@@ -53,7 +53,7 @@ public interface UserMapper {
 
     @Mapping(target = "bottomReferrals", ignore = true)
     @Mapping(target = "treeLevel", ignore = true)
-    @Mapping(target = "reflink", source = "login", qualifiedByName = "getReflink")
+//    @Mapping(target = "reflink", source = "login", qualifiedByName = "getReflink")
 //    @Mapping(target = "transactions", source = "login", qualifiedByName = "mapTransactionsToUser")
     GetFullDto toFullGetDto(UserCredentials user);
 

@@ -40,8 +40,8 @@ public class WithdrawService {
         telegramService.sendNotificationAboutWithdraw(userCredentials, withdrawGetDto);
 
         userCredentials.setBalanceAmount(
-                userCredentials.getBalanceAmount() -
-                model.getTransactionAmount());
+                userCredentials.getBalanceAmount()
+                - model.getTransactionAmount());
         userCredentialsRepo.save(userCredentials);
 
         return withdrawGetDto;

@@ -4,6 +4,7 @@ import dev.guarmo.whales.model.user.RoleStatus;
 import dev.guarmo.whales.model.user.dto.GetUserCredentialsDto;
 import dev.guarmo.whales.model.user.dto.PostUserDto;
 import dev.guarmo.whales.security.TokenService;
+import dev.guarmo.whales.service.DepositService;
 import dev.guarmo.whales.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -25,9 +26,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public GetUserCredentialsDto addUser(@RequestBody PostUserDto postUserDto) {
-
-        // CHECK HERE AND ADD REFERRAL ABOVE SOME NOTIFICATION ABOUT USER REGISTRATION
-
         return userService.addUser(postUserDto, RoleStatus.ADMIN);
     }
 }

@@ -45,10 +45,12 @@ public class InvestModelService {
             investModels[i] = generateInvestModel(i);
         }
 
+        investModels[6].setInvestModelStatus(InvestModelStatus.FINISHED);
+        investModels[7].setInvestModelStatus(InvestModelStatus.BOUGHT);
+        investModels[8].setInvestModelStatus(InvestModelStatus.FROZEN);
         investModels[9].setInvestModelStatus(InvestModelStatus.AVAILABLE);
-        investModels[10].setInvestModelStatus(InvestModelStatus.AVAILABLE);
-        investModels[11].setInvestModelStatus(InvestModelStatus.AVAILABLE);
-        investModels[12].setInvestModelStatus(InvestModelStatus.AVAILABLE);
+        investModels[10].setInvestModelStatus(InvestModelStatus.MONEYLOCKED);
+        investModels[10].setInvestModelStatus(InvestModelStatus.TIMELOCKED);
         investModels[13].setInvestModelStatus(InvestModelStatus.LOCKED);
         investModels[14].setInvestModelStatus(InvestModelStatus.SPECIALS);
 
@@ -66,7 +68,7 @@ public class InvestModelService {
         investModel.setInvestModelLevel(InvestModelLevel.values()[i]); // Assigning levels sequentially
 
         // Assigning statuses in increasing order from 1 to 16
-        investModel.setInvestModelStatus(InvestModelStatus.TIMELOCKED);
+        investModel.setInvestModelStatus(InvestModelStatus.AVAILABLE);
         return investModel;
     }
 
@@ -74,7 +76,11 @@ public class InvestModelService {
     public GetInvestModel addInvestModel(PostInvestModel investModel, String login) {
         UserCredentials model = userCredentialsRepo.findByLogin(login).orElseThrow();
         InvestModel gotModelFromUser = model.getInvestModels().stream().filter(im -> im.getInvestModelLevel() == investModel.getInvestModelLevel()).findFirst().orElseThrow();
-        if (gotModelFromUser.getInvestModelStatus().equals(InvestModelStatus.AVAILABLE)) {
+
+        if ((gotModelFromUser.getUnlockDate().isBefore(LocalDateTime.now())
+        && gotModelFromUser.getInvestModelStatus() == InvestModelStatus.TIMELOCKED)
+        || gotModelFromUser.getInvestModelStatus() == InvestModelStatus.AVAILABLE) {
+
             PostPurchaseDto postPurchaseDto = new PostPurchaseDto();
             postPurchaseDto.setPurchasedModel(gotModelFromUser.getInvestModelLevel());
             postPurchaseDto.setTransactionAmount(gotModelFromUser.getPriceAmount());
@@ -88,7 +94,16 @@ public class InvestModelService {
         }
     }
 
-//    public List<GetInvestModel> getAllInvestTables(String name) {
-//
+    public List<GetInvestModel> getAllInvestModels(String name) {
+        UserCredentials model = userHelper.findByLoginModel(name);
+        model.getInvestModels().stream();
+        return null;
+    }
+
+//    private InvestModel checkStatusesToChange(InvestModel investModel) {
+//        if (investModel.getInvestModelStatus().equals(InvestModelStatus.TIMELOCKED)
+//        && investModel.getUnlockDate().isAfter(investModel.getUnlockDate())) {
+//            investModel.setInvestModelStatus(InvestModelStatus.AVAILABLE);
+//        }
 //    }
 }

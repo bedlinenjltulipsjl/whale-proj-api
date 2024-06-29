@@ -56,6 +56,7 @@ public class SecurityConfig {
                         .requestMatchers("/pay/ipn").permitAll()
                         .requestMatchers("/auth/register").permitAll()
                         .requestMatchers("/users/register").permitAll()
+                        .requestMatchers("/deposits/getlink").permitAll()
                         .requestMatchers("/auth/token").authenticated()
                         .anyRequest().hasAnyAuthority("SCOPE_USER", "SCOPE_ADMIN")
                 )

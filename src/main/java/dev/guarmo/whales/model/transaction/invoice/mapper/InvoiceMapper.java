@@ -1,16 +1,11 @@
 package dev.guarmo.whales.model.transaction.invoice.mapper;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.guarmo.whales.config.MapperConfig;
-import dev.guarmo.whales.model.transaction.GetTransaction;
 import dev.guarmo.whales.model.transaction.invoice.Invoice;
 import dev.guarmo.whales.model.transaction.invoice.dto.GetInvoiceDto;
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapperConfig.class)
 public interface InvoiceMapper {

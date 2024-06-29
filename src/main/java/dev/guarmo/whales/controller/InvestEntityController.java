@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -14,10 +16,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(allowedHeaders = "*")
 public class InvestEntityController {
     private final InvestModelService investModelService;
-//    @GetMapping
-//    public List<GetInvestModel> buyTable(Authentication authentication) {
-//        return investModelService.g(authentication.getName());
-//    }
+    @GetMapping
+    public List<GetInvestModel> buyTable(Authentication authentication) {
+        return investModelService.getAllInvestModels(authentication.getName());
+    }
 
 
     @PatchMapping

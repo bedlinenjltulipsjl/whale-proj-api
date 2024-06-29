@@ -14,11 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,15 +23,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-    private final AllTransactionService allTransactionService;
-    private final UserHelper userHelper;
-    private final UserMapper userMapper;
-    private final InvestModelMapper investModelMapper;
-
-    @GetMapping("/reflink")
-    public String generateReferralLinkForUser(Authentication authentication) {
-        return userHelper.generateRefLinkForUser(authentication.getName());
-    }
 
     @PostMapping("/register")
     public GetUserCredentialsDto addUser(@RequestBody PostUserDto postUserDto) {
@@ -47,20 +34,9 @@ public class UserController {
         return userService.getFourLevelsReferralTree(authentication.getName());
     }
 
-    // MODIFY HERE A LOT
     @GetMapping("/by-token")
     public GetFullDto getContentUserDtoByTgId(Authentication authentication) {
-        UserCredentials model = userService.findByLoginModel(authentication.getName());
-        List<GetInvestModel> sortedInvestModels = model.getInvestModels().stream()
-                .map(investModelMapper::toGetDto)
-                .sorted(Comparator.comparing(GetInvestModel::getInvestModelLevel))
-                .toList();
-
-
-        GetFullDto fullDtoByLogin = userService.findFullDtoByLogin(authentication.getName());
-        fullDtoByLogin.setTransactions(allTransactionService.getAllTypesOfTransactions(authentication.getName()));
-        fullDtoByLogin.setInvestModels(sortedInvestModels);
-        return fullDtoByLogin;
+        return userService.findFullDtoByLogin(authentication.getName());
     }
 
     @GetMapping("/top")

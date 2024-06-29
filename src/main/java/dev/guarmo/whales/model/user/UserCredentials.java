@@ -6,7 +6,9 @@ import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
 import dev.guarmo.whales.model.transaction.withdraw.MoneyWithdraw;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
@@ -33,9 +35,10 @@ public class UserCredentials implements UserDetails {
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
-
+    @NonNull
     private String name;
     private String username;
+    @Min(0)
     private double balanceAmount;
     @OneToMany
     private List<Deposit> deposits;
@@ -45,7 +48,7 @@ public class UserCredentials implements UserDetails {
     private List<Income> incomes;
     @OneToMany
     private List<Purchase> purchases;
-
+    private String reflink;
     @OneToMany
     private List<InvestModel> investModels;
     @OneToMany
