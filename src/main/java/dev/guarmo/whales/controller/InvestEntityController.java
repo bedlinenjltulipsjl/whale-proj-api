@@ -24,6 +24,6 @@ public class InvestEntityController {
 
     @PatchMapping
     public GetInvestModel buyTable(@RequestBody PostInvestModel investModel, Authentication authentication) {
-        return investModelService.addInvestModel(investModel, authentication.getName());
+        return investModelService.buyInvestModel(investModel, authentication.getName());
     }
 }

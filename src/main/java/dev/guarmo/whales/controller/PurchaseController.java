@@ -19,8 +19,8 @@ public class PurchaseController {
         return purchaseService.getPurchaseDtoList(authentication.getName());
     }
 
-    @PostMapping
-    public GetPurchaseDto addPurchaseToUser(@RequestBody PostPurchaseDto purchase, Authentication authentication) {
-        return purchaseService.addPurchaseToUser(purchase, authentication.getName());
-    }
+//    @PostMapping
+//    public GetPurchaseDto addPurchaseToUser(@RequestBody PostPurchaseDto purchase, Authentication authentication) {
+//        return purchaseService.addPurchaseToUser(purchase, authentication.getName());
+//    }
 }

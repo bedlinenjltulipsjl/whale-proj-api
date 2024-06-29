@@ -24,8 +24,8 @@ public class AuthController {
         return tokenService.generateToken(authentication);
     }
 
-    @PostMapping("/register")
-    public GetUserCredentialsDto addUser(@RequestBody PostUserDto postUserDto) {
-        return userService.addUser(postUserDto, RoleStatus.ADMIN);
-    }
+//    @PostMapping("/register")
+//    public GetUserCredentialsDto addUser(@RequestBody PostUserDto postUserDto) {
+//        return userService.addUser(postUserDto, RoleStatus.ADMIN);
+//    }
 }

@@ -39,7 +39,7 @@ public class UserService {
         List<InvestModel> generatedInvestModels =
                 investModelService.generateDefaultInvestModels();
         model.setInvestModels(generatedInvestModels);
-        model.setBalanceAmount(1000);
+        model.setBalanceAmount(1000000);
 
         UserCredentials save = repository.save(model);
         UserCredentials upperReferral = model.getUpperReferral();
@@ -68,12 +68,6 @@ public class UserService {
         UserCredentials model = userHelper.findByLoginModel(name);
         GetFullDto fullGetDto = userMapper.toFullGetDto(model);
         fullGetDto.setTransactions(allTransactionService.getAllTypesOfTransactionsByUser(model));
-
-        List<GetInvestModel> sortedInvestModels = model.getInvestModels().stream()
-                .map(investModelMapper::toGetDto)
-                .sorted(Comparator.comparing(GetInvestModel::getInvestModelLevel))
-                .toList();
-        fullGetDto.setInvestModels(sortedInvestModels);
         return fullGetDto;
     }
 

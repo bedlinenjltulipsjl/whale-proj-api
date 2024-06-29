@@ -43,7 +43,7 @@ public class IncomeService {
         return List.of(getIncomeDto1, getIncomeDto2, getIncomeDto3);
     }
 
-    private Income createAndAddBonusToUser(Double amount, double referralPartInPercents, UserCredentials userThatSendsBonuses, UserCredentials bonusTo) {
+    public Income createAndAddBonusToUser(Double amount, double referralPartInPercents, UserCredentials userThatSendsBonuses, UserCredentials bonusTo) {
         Income income = incomeMapper.createBonusWithSenderAndAmount(amount * referralPartInPercents, userThatSendsBonuses);
         Income savedIncome = incomeRepo.save(income);
 

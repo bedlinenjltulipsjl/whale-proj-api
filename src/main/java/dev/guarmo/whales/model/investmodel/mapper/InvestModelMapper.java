@@ -16,6 +16,4 @@ import org.mapstruct.MappingTarget;
 @Mapper(config = MapperConfig.class)
 public interface InvestModelMapper {
     GetInvestModel toGetDto(InvestModel investModel);
-
-//    MoneyWithdraw toModel(PostWithdrawDto postWithdrawDto);
 }

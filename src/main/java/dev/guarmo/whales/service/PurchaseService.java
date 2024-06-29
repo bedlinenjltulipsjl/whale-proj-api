@@ -9,19 +9,21 @@ import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.repository.PurchaseRepo;
 import dev.guarmo.whales.repository.UserCredentialsRepo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PurchaseService {
 
     private final PurchaseMapper purchaseMapper;
     private final PurchaseRepo purchaseRepo;
     private final UserCredentialsRepo userCredentialsRepo;
-    private final UserHelper userHelper;
     private final IncomeService incomeService;
+    private final ReferralBonusService referralBonusService;
 
     public List<GetPurchaseDto> getPurchaseDtoList(String tgid) {
         return userCredentialsRepo.findByLogin(tgid).orElseThrow()
@@ -38,12 +40,11 @@ public class PurchaseService {
     }
 
     @Transactional
-    public GetPurchaseDto addPurchaseToUser(PostPurchaseDto dto, String tgid) {
-        UserCredentials model = userHelper.findByLoginModel(tgid);
+    public GetPurchaseDto addPurchaseToUser(PostPurchaseDto dto, UserCredentials model) {
         GetPurchaseDto getPurchaseDto = addPurchaseToUserWithModel(dto, model);
-//        incomeService.addBonusUpperReferrals()
-        // ADD REFERRAL BONUSES TO USERS
-        // ADD RANDOM BONUS TO ALL (MAX 10 USERS ABOVE)
+
+        incomeService.addBonusUpperReferrals(dto.getTransactionAmount(), model);
+        referralBonusService.setRandomlyIncomeToOneOfTopTenReferrals(dto.getTransactionAmount(), dto.getPurchasedModel(), model);
 
         return getPurchaseDto;
     }
