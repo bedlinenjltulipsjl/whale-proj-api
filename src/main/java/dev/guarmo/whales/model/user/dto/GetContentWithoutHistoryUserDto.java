@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GetContentWithoutHistoryUserDto {
-    private String id;
+    private Long id;
     private String login;
     private String name;
     private String username;

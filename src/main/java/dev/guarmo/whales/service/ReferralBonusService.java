@@ -1,6 +1,7 @@
 package dev.guarmo.whales.service;
 
 import dev.guarmo.whales.helper.InvestModelHelper;
+import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ReferralBonusService {
     private final InvestModelHelper investModelHelper;
+    private final UserHelper userHelper;
     @Value("${referral.bonus.part}")
     private Double bonusInPercentsFromPurchase;
     @Value("${search.referral.depth}")
@@ -65,16 +67,22 @@ public class ReferralBonusService {
 
         List<UserCredentials> referralsAboveFiltered = filterUsersByModelLevelAndStatus(referralsAbove, desiredLevel, InvestModelStatus.BOUGHT);
 
-        Random random = new Random();
-        int randomIndex = random.nextInt(referralsAboveFiltered.size());
-        return referralsAboveFiltered.get(randomIndex);
+        if (referralsAboveFiltered.isEmpty()) {
+            return userHelper.findByLoginModel("rootadmin");
+        } else {
+            Random random = new Random();
+            int size = referralsAboveFiltered.size();
+            int randomIndex = random.nextInt(size);
+            return referralsAboveFiltered.get(randomIndex);
+        }
     }
 
     public List<UserCredentials> filterUsersByModelLevelAndStatus(List<UserCredentials> users, InvestModelLevel desiredLevel, InvestModelStatus desiredStatus) {
-        return users.stream()
+        List<UserCredentials> collect = users.stream()
                 .filter(user -> user.getInvestModels().stream()
                         .anyMatch(model -> model.getInvestModelLevel() == desiredLevel && model.getInvestModelStatus().equals(desiredStatus)))
                 .collect(Collectors.toList());
+        return collect;
     }
 
     private InvestModel addCyclesToTableAfterAddingIncome(

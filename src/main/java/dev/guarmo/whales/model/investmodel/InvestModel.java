@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Entity
 public class InvestModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String naming;
     private Double priceAmount;
     private Integer cyclesCount;

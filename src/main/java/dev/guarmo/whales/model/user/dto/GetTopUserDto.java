@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class GetTopUserDto {
-    private String id;
+    private Long id;
     private String name;
     private String username;
     private Double investedAmount;

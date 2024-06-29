@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class GetInvestModel {
-    private String id;
+    private Long id;
     private String naming;
     private Double priceAmount;
     private Integer cyclesCount;

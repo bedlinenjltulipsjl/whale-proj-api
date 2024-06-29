@@ -24,8 +24,8 @@ import java.util.List;
 @Entity
 public class UserCredentials implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(unique = true, nullable = false)
     private String login;
     @Column(nullable = false)
@@ -38,7 +38,6 @@ public class UserCredentials implements UserDetails {
     @NonNull
     private String name;
     private String username;
-    @Min(0)
     private double balanceAmount;
     @OneToMany
     private List<Deposit> deposits;

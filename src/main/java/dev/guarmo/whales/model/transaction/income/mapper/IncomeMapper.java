@@ -26,9 +26,9 @@ public interface IncomeMapper {
 
     @AfterMapping
     default void setTransactionDesc(@MappingTarget GetTransaction getTransaction, Income income) {
-        getTransaction.setCreatedAt(getTransaction.getCreatedAt().minusDays(1));
+//        getTransaction.setCreatedAt(getTransaction.getCreatedAt().minusDays(1));
         getTransaction.setTransactionType(TransactionType.INCOME);
-        getTransaction.setDescription("Referral bonus from " + income.getIncomeCausedByUser().getName());
+        getTransaction.setDescription("Referral bonus for " + income.getPurchasedModel() + " from " + income.getIncomeCausedByUser().getName());
     }
 
     default Income createBonusWithSenderAndAmount(Double amount, UserCredentials incomeCausedByUser) {

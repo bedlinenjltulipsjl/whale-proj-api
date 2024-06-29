@@ -1,5 +1,6 @@
 package dev.guarmo.whales.service;
 
+import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.transaction.income.Income;
 import dev.guarmo.whales.model.transaction.income.dto.GetIncomeDto;
 import dev.guarmo.whales.model.transaction.income.mapper.IncomeMapper;
@@ -43,7 +44,13 @@ public class IncomeService {
         return List.of(getIncomeDto1, getIncomeDto2, getIncomeDto3);
     }
 
-    public Income createAndAddBonusToUser(Double amount, double referralPartInPercents, UserCredentials userThatSendsBonuses, UserCredentials bonusTo) {
+    public Income createAndAddBonusToUser(
+            Double amount,
+            double referralPartInPercents,
+            InvestModelLevel investModelLevel,
+            UserCredentials userThatSendsBonuses,
+            UserCredentials bonusTo) {
+
         Income income = incomeMapper.createBonusWithSenderAndAmount(amount * referralPartInPercents, userThatSendsBonuses);
         Income savedIncome = incomeRepo.save(income);
 

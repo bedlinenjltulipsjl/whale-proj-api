@@ -24,8 +24,12 @@ public class InvestModelHelper {
     }
 
     private List<InvestModel> changeStatesAfterBuyingInvestEntity(List<InvestModel> investModels) {
-        InvestModel investModel = investModels.stream().filter(m -> m.getInvestModelStatus() == InvestModelStatus.LOCKED).findFirst().orElseThrow();
+        InvestModel investModel = investModels.stream().filter(m -> m.getInvestModelStatus() == InvestModelStatus.MONEYLOCKED).findFirst().orElseThrow();
+        investModel.setInvestModelStatus(InvestModelStatus.AVAILABLE);
+
+        investModel = investModels.stream().filter(m -> m.getInvestModelStatus() == InvestModelStatus.LOCKED).findFirst().orElseThrow();
         investModel.setInvestModelStatus(InvestModelStatus.MONEYLOCKED);
+
         return investModels;
     }
 

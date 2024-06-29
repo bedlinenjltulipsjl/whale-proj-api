@@ -8,7 +8,7 @@ import java.util.List;
 @Getter
 @Setter
 public class GetContentUserDto {
-    private String id;
+    private Long id;
     private String login;
     private String name;
     private String username;

@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 public class GetFullDto {
-    private String id;
+    private Long id;
     private String login;
     private String name;
     private String username;

@@ -39,7 +39,6 @@ public class PurchaseService {
                 .getPurchases();
     }
 
-    @Transactional
     public GetPurchaseDto addPurchaseToUser(PostPurchaseDto dto, UserCredentials model) {
         GetPurchaseDto getPurchaseDto = addPurchaseToUserWithModel(dto, model);
 
@@ -49,7 +48,6 @@ public class PurchaseService {
         return getPurchaseDto;
     }
 
-    @Transactional
     public GetPurchaseDto addPurchaseToUserWithModel(PostPurchaseDto dto, UserCredentials byLoginModel) {
         Purchase model = purchaseMapper.toModel(dto);
         Purchase saved = purchaseRepo.save(model);
