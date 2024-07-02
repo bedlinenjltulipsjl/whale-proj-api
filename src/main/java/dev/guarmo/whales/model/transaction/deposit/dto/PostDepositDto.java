@@ -1,11 +1,11 @@
 package dev.guarmo.whales.model.transaction.deposit.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class PostDepositDto {
     @JsonProperty(value = "id")
     private Long transactionId;

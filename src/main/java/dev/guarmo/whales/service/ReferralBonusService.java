@@ -11,8 +11,6 @@ import dev.guarmo.whales.model.transaction.income.mapper.IncomeMapper;
 import dev.guarmo.whales.model.user.UserCredentials;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -28,6 +26,8 @@ public class ReferralBonusService {
     private final UserHelper userHelper;
     @Value("${referral.bonus.part}")
     private Double bonusInPercentsFromPurchase;
+    @Value("${app.admin.name}")
+    private String adminLogin;
     @Value("${search.referral.depth}")
     private Integer maxRefDepthSearch;
     private final IncomeMapper incomeMapper;
@@ -42,6 +42,7 @@ public class ReferralBonusService {
         Income addedBonusToUser = incomeService.createAndAddBonusToUser(
                 purchaseAmount,
                 bonusInPercentsFromPurchase,
+                investModelType,
                 userCredentials,
                 randomFromTopTenReferrals
         );
@@ -68,7 +69,7 @@ public class ReferralBonusService {
         List<UserCredentials> referralsAboveFiltered = filterUsersByModelLevelAndStatus(referralsAbove, desiredLevel, InvestModelStatus.BOUGHT);
 
         if (referralsAboveFiltered.isEmpty()) {
-            return userHelper.findByLoginModel("rootadmin");
+            return userHelper.findByLoginModel(adminLogin);
         } else {
             Random random = new Random();
             int size = referralsAboveFiltered.size();

@@ -27,15 +27,15 @@ public class IncomeService {
     @Value("${referral.lvl3.part}")
     private Double referralLvl3PartInPercents;
 
-    public List<GetIncomeDto> addBonusUpperReferrals(Double amount, UserCredentials userThatSendsBonuses) {
+    public List<GetIncomeDto> addBonusUpperReferrals(Double amount, InvestModelLevel investModelLevel, UserCredentials userThatSendsBonuses) {
 
         UserCredentials bonusToLvl1 = userThatSendsBonuses.getUpperReferral();
         UserCredentials bonusToLvl2 = bonusToLvl1.getUpperReferral();
         UserCredentials bonusToLvl3 = bonusToLvl2.getUpperReferral();
 
-        Income bonusLvl1 = createAndAddBonusToUser(amount, referralLvl1PartInPercents, userThatSendsBonuses, bonusToLvl1);
-        Income bonusLvl2 = createAndAddBonusToUser(amount, referralLvl2PartInPercents, userThatSendsBonuses, bonusToLvl2);
-        Income bonusLvl3 = createAndAddBonusToUser(amount, referralLvl3PartInPercents, userThatSendsBonuses, bonusToLvl3);
+        Income bonusLvl1 = createAndAddBonusToUser(amount, referralLvl1PartInPercents, investModelLevel, userThatSendsBonuses, bonusToLvl1);
+        Income bonusLvl2 = createAndAddBonusToUser(amount, referralLvl2PartInPercents, investModelLevel, userThatSendsBonuses, bonusToLvl2);
+        Income bonusLvl3 = createAndAddBonusToUser(amount, referralLvl3PartInPercents, investModelLevel, userThatSendsBonuses, bonusToLvl3);
 
         GetIncomeDto getIncomeDto1 = mapSomeFieldsIncomeDto(bonusLvl1, userThatSendsBonuses, bonusToLvl1);
         GetIncomeDto getIncomeDto2 = mapSomeFieldsIncomeDto(bonusLvl2, userThatSendsBonuses, bonusToLvl2);
@@ -51,7 +51,7 @@ public class IncomeService {
             UserCredentials userThatSendsBonuses,
             UserCredentials bonusTo) {
 
-        Income income = incomeMapper.createBonusWithSenderAndAmount(amount * referralPartInPercents, userThatSendsBonuses);
+        Income income = incomeMapper.createBonusWithSenderAndAmount(amount * referralPartInPercents, investModelLevel, userThatSendsBonuses);
         Income savedIncome = incomeRepo.save(income);
 
         bonusTo.getIncomes().add(savedIncome);

@@ -1,5 +1,6 @@
 package dev.guarmo.whales.teleg;
 
+import dev.guarmo.whales.model.transaction.deposit.dto.PostDepositDto;
 import dev.guarmo.whales.model.transaction.income.dto.GetIncomeDto;
 import dev.guarmo.whales.model.transaction.invoice.dto.GetInvoiceDto;
 import dev.guarmo.whales.model.transaction.deposit.dto.GetDepositDto;
@@ -28,9 +29,8 @@ public class TelegramService {
         bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
     }
 
-    public void sendNotificationAboutSuccessTransaction(GetDepositDto dto) {
+    public void sendNotificationAboutSuccessTransaction(PostDepositDto dto) {
         String text = dto.toString();
-
         bot.prepareAndSendMessage(DELIVERY_CHAT_ID, text);
     }
 

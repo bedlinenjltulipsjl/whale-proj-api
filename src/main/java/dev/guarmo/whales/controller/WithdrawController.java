@@ -10,6 +10,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(allowedHeaders = "*")
 @RequestMapping("/withdraws")
 public class WithdrawController {
     private final WithdrawService withdrawService;

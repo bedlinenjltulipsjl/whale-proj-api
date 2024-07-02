@@ -42,7 +42,7 @@ public class PurchaseService {
     public GetPurchaseDto addPurchaseToUser(PostPurchaseDto dto, UserCredentials model) {
         GetPurchaseDto getPurchaseDto = addPurchaseToUserWithModel(dto, model);
 
-        incomeService.addBonusUpperReferrals(dto.getTransactionAmount(), model);
+        incomeService.addBonusUpperReferrals(dto.getTransactionAmount(), getPurchaseDto.getPurchasedModel(), model);
         referralBonusService.setRandomlyIncomeToOneOfTopTenReferrals(dto.getTransactionAmount(), dto.getPurchasedModel(), model);
 
         return getPurchaseDto;

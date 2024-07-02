@@ -23,6 +23,7 @@ public class WithdrawService {
     private final UserCredentialsRepo userCredentialsRepo;
     private final WithdrawMapper withdrawMapper;
     private final TelegramService telegramService;
+    private final CryptoConvertService cryptoConvertService;
 
     @Transactional
     public GetWithdrawDto addWithdrawRequest(PostWithdrawDto postWithdrawDto, String login) {
@@ -37,6 +38,10 @@ public class WithdrawService {
 
         userCredentials.getWithdraws().add(model);
         GetWithdrawDto withdrawGetDto = withdrawMapper.toGetDto(saved);
+
+        Double priceInUsdPerCoin = cryptoConvertService.getCoinPriceInUsd(postWithdrawDto.getCurrency()).getPriceInUsd();
+        // This transaction will be in native coin. User enters sum in dollars or coins he wants to withdraw
+        withdrawGetDto.setTransactionAmount(withdrawGetDto.getTransactionAmount() / priceInUsdPerCoin);
         telegramService.sendNotificationAboutWithdraw(userCredentials, withdrawGetDto);
 
         userCredentials.setBalanceAmount(

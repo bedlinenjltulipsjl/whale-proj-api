@@ -11,11 +11,4 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/incomes")
 public class IncomeController {
-
-    private final IncomeService incomeService;
-
-    @GetMapping
-    public List<GetIncomeDto> getAllIncomesFromUser(Authentication authentication) {
-        return incomeService.findAllIncomesByLogin(authentication.getName());
-    }
 }

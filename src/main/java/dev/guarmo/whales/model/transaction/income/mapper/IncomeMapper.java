@@ -1,6 +1,7 @@
 package dev.guarmo.whales.model.transaction.income.mapper;
 
 import dev.guarmo.whales.config.MapperConfig;
+import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.transaction.GetTransaction;
 import dev.guarmo.whales.model.transaction.TransactionType;
 import dev.guarmo.whales.model.transaction.income.Income;
@@ -31,10 +32,11 @@ public interface IncomeMapper {
         getTransaction.setDescription("Referral bonus for " + income.getPurchasedModel() + " from " + income.getIncomeCausedByUser().getName());
     }
 
-    default Income createBonusWithSenderAndAmount(Double amount, UserCredentials incomeCausedByUser) {
+    default Income createBonusWithSenderAndAmount(Double amount, InvestModelLevel investModelLevel, UserCredentials incomeCausedByUser) {
         Income income = new Income();
         income.setIncomeCausedByUser(incomeCausedByUser);
         income.setTransactionAmount(amount);
+        income.setPurchasedModel(investModelLevel);
         return income;
     }
 }

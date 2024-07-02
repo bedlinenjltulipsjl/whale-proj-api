@@ -14,24 +14,21 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class InvoiceGeneratorService {
-
     private final InvoiceMapper invoiceMapper;
     private final InvoiceRepo invoiceRepository;
-    private final TelegramService telegramService;
     private final WestWalletService westWalletService;
-
 
     public GetInvoiceDto generateInvoicePageObject(String userLogin, String cryptoCurrencyType, Double topUpAmount, String email) {
         String string = westWalletService.generateInvoicePagePostRequestResponse(userLogin, cryptoCurrencyType, topUpAmount);
         try {
             Invoice invoice = invoiceMapper.getInvoiceFromJson(string);
+
+            // We are passing label and email to request, but they are not returned
+            // As response from request, so we need to after init them here once again
             invoice.setLabel(userLogin);
             invoice.setEmail(email);
-            invoice = invoiceRepository.save(invoice);
 
-            GetInvoiceDto getDto = invoiceMapper.toGetDto(invoice);
-            telegramService.sendNotificationAboutStartingInvoice(getDto);
-            return getDto;
+            return invoiceMapper.toGetDto(invoiceRepository.save(invoice));
         } catch (JsonProcessingException e) {
             log.error("Error while parsing json", e);
             throw new RuntimeException("Error while parsing json", e);

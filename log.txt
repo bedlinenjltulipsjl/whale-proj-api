@@ -1,0 +1,164 @@
+2024-07-01T12:45:17.806+03:00  INFO 21680 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Starting Application using Java 17.0.11 with PID 21680 (D:\Work\Java\whale-api-v2\target\classes started by bohdan in D:\Work\Java\whale-api-v2)
+2024-07-01T12:45:17.812+03:00  INFO 21680 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : No active profile set, falling back to 1 default profile: "default"
+2024-07-01T12:45:19.086+03:00  INFO 21680 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-01T12:45:19.156+03:00  INFO 21680 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 8 JPA repository interfaces.
+2024-07-01T12:45:19.640+03:00  INFO 21680 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6028 (http)
+2024-07-01T12:45:19.648+03:00  INFO 21680 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-01T12:45:19.648+03:00  INFO 21680 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-01T12:45:19.690+03:00  INFO 21680 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-07-01T12:45:19.690+03:00  INFO 21680 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1832 ms
+2024-07-01T12:45:19.815+03:00  INFO 21680 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-01T12:45:19.888+03:00  INFO 21680 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-01T12:45:19.928+03:00  INFO 21680 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-01T12:45:20.199+03:00  INFO 21680 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-01T12:45:20.226+03:00  INFO 21680 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-01T12:45:21.688+03:00  INFO 21680 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a67f8b4
+2024-07-01T12:45:21.690+03:00  INFO 21680 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-01T12:45:21.961+03:00  WARN 21680 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-01T12:45:22.786+03:00  INFO 21680 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-01T12:45:27.552+03:00  INFO 21680 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-01T12:45:27.752+03:00  INFO 21680 --- [jwt-token-server] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-01T12:45:28.782+03:00  WARN 21680 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-01T12:45:28.809+03:00  INFO 21680 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-07-01T12:45:29.177+03:00  INFO 21680 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e774546, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f67291f, org.springframework.security.web.context.SecurityContextHolderFilter@5f7e2ca8, org.springframework.security.web.header.HeaderWriterFilter@2a0154f7, org.springframework.web.filter.CorsFilter@1243ad9a, org.springframework.security.web.authentication.logout.LogoutFilter@3e93ee71, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@6d6e8dfc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1d9c18b9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46f5030f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2d4eba14, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@30c085f3, org.springframework.security.web.session.SessionManagementFilter@4872d04d, org.springframework.security.web.access.ExceptionTranslationFilter@50fd4246, org.springframework.security.web.access.intercept.AuthorizationFilter@2fd16368]
+2024-07-01T12:45:29.526+03:00  INFO 21680 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-07-01T12:45:30.116+03:00  INFO 21680 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Started Application in 12.805 seconds (process running for 13.858)
+2024-07-01T12:45:34.026+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:45:38.177+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:45:42.445+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:45:46.591+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:45:50.780+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:45:54.964+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:45:59.121+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:46:03.271+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:46:06.382+03:00  INFO 21680 --- [jwt-token-server] [http-nio-6028-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-01T12:46:06.383+03:00  INFO 21680 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-01T12:46:06.384+03:00  INFO 21680 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-07-01T12:46:12.194+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:46:18.178+03:00  INFO 21680 --- [jwt-token-server] [http-nio-6028-exec-1] d.g.whales.service.WestWalletService     : Response Body and Request Body after sending POST request to get invoice link: 200 {"error":"ip_not_allowed"}
+ {"currencies": ["DASH"], "amount": "0.06", "amount_in_usd": true, "ipn_url": "https://whalefederation.tech:6028/api/pay/ipn", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "u11111"}
+2024-07-01T12:46:22.758+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:46:37.627+03:00 ERROR 21680 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:46:37.692+03:00  INFO 21680 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-01T12:46:37.693+03:00  INFO 21680 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-01T12:46:37.713+03:00  WARN 21680 --- [jwt-token-server] [http-nio-6028-exec-1] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1a67f8b4 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-07-01T12:50:00.673+03:00  INFO 103408 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Starting Application using Java 17.0.11 with PID 103408 (D:\Work\Java\whale-api-v2\target\classes started by bohdan in D:\Work\Java\whale-api-v2)
+2024-07-01T12:50:00.675+03:00  INFO 103408 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : No active profile set, falling back to 1 default profile: "default"
+2024-07-01T12:50:01.198+03:00  INFO 103408 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-01T12:50:01.251+03:00  INFO 103408 --- [jwt-token-server] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 8 JPA repository interfaces.
+2024-07-01T12:50:01.590+03:00  INFO 103408 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 6028 (http)
+2024-07-01T12:50:01.602+03:00  INFO 103408 --- [jwt-token-server] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-01T12:50:01.603+03:00  INFO 103408 --- [jwt-token-server] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-07-01T12:50:01.657+03:00  INFO 103408 --- [jwt-token-server] [main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2024-07-01T12:50:01.658+03:00  INFO 103408 --- [jwt-token-server] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 952 ms
+2024-07-01T12:50:01.824+03:00  INFO 103408 --- [jwt-token-server] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-01T12:50:01.871+03:00  INFO 103408 --- [jwt-token-server] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-07-01T12:50:01.902+03:00  INFO 103408 --- [jwt-token-server] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-01T12:50:02.119+03:00  INFO 103408 --- [jwt-token-server] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-01T12:50:02.136+03:00  INFO 103408 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-01T12:50:15.069+03:00  INFO 103408 --- [jwt-token-server] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f1d6a13
+2024-07-01T12:50:15.071+03:00  INFO 103408 --- [jwt-token-server] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-01T12:50:15.533+03:00  WARN 103408 --- [jwt-token-server] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-07-01T12:50:16.476+03:00  INFO 103408 --- [jwt-token-server] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-01T12:50:23.389+03:00  INFO 103408 --- [jwt-token-server] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-01T12:50:23.564+03:00  INFO 103408 --- [jwt-token-server] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-01T12:50:23.964+03:00  WARN 103408 --- [jwt-token-server] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-01T12:50:23.979+03:00  INFO 103408 --- [jwt-token-server] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-07-01T12:50:24.176+03:00  INFO 103408 --- [jwt-token-server] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7d2dfe9c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60b721c9, org.springframework.security.web.context.SecurityContextHolderFilter@66ab765c, org.springframework.security.web.header.HeaderWriterFilter@4623c0d3, org.springframework.web.filter.CorsFilter@4f2ab774, org.springframework.security.web.authentication.logout.LogoutFilter@12b9d405, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@64b6d6dd, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1ab6a093, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c04dae9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@36821a1b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@f57ced1, org.springframework.security.web.session.SessionManagementFilter@307cf289, org.springframework.security.web.access.ExceptionTranslationFilter@40a1916d, org.springframework.security.web.access.intercept.AuthorizationFilter@c5dc3db]
+2024-07-01T12:50:24.372+03:00  INFO 103408 --- [jwt-token-server] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 6028 (http) with context path '/api'
+2024-07-01T12:50:24.813+03:00  INFO 103408 --- [jwt-token-server] [main] dev.guarmo.whales.Application            : Started Application in 24.423 seconds (process running for 24.925)
+2024-07-01T12:50:28.826+03:00 ERROR 103408 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:50:32.989+03:00 ERROR 103408 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:50:34.666+03:00  INFO 103408 --- [jwt-token-server] [http-nio-6028-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-01T12:50:34.666+03:00  INFO 103408 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-01T12:50:34.667+03:00  INFO 103408 --- [jwt-token-server] [http-nio-6028-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-07-01T12:50:35.229+03:00  INFO 103408 --- [jwt-token-server] [http-nio-6028-exec-1] d.g.whales.service.WestWalletService     : Response Body and Request Body after sending POST request to get invoice link: 200 {"token":"586b47e2189adbe0276234807820e5","url":"https://westwallet.io/payment/586b47e2189adbe0276234807820e5","expire_at":"2024-07-01 10:05:35","allowed_currencies_data":[{"currency_code":"DASH","amount":0.00245299,"address":"XsH2GxLdWaEFPsVwp1dNewotUXBYqazi4u","dest_tag":""}],"success_url":"https://www.youtube.com/","error":"ok"}
+ {"currencies": ["DASH"], "amount": "0.06", "amount_in_usd": true, "ipn_url": "https://whalefederation.tech:6028/api/pay/ipn", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "u11111"}
+2024-07-01T12:50:58.012+03:00 ERROR 103408 --- [jwt-token-server] [Whale Payment Notify Telegram Connection] o.t.t.u.DefaultBotSession                : Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error getting updates: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:93) ~[telegrambots-meta-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:260) ~[telegrambots-5.6.0.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:189) ~[telegrambots-5.6.0.jar:na]
+
+2024-07-01T12:52:31.123+03:00  WARN 103408 --- [jwt-token-server] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m36s502ms813µs400ns).
+2024-07-01T12:52:31.185+03:00  INFO 103408 --- [jwt-token-server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-01T12:52:31.187+03:00  INFO 103408 --- [jwt-token-server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
