@@ -57,6 +57,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/register").permitAll()
                         .requestMatchers("/users/register").permitAll()
                         .requestMatchers("/deposits/getlink").permitAll()
+                        .requestMatchers("/tables/details").permitAll()
                         .requestMatchers("/auth/token").authenticated()
                         .anyRequest().hasAnyAuthority("SCOPE_USER", "SCOPE_ADMIN")
                 )

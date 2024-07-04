@@ -1,6 +1,7 @@
 package dev.guarmo.whales.model.transaction.purchase.mapper;
 
 import dev.guarmo.whales.config.MapperConfig;
+import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.transaction.GetTransaction;
 import dev.guarmo.whales.model.transaction.TransactionType;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
@@ -23,5 +24,12 @@ public interface PurchaseMapper {
     default void setTransactionDesc(@MappingTarget GetTransaction getTransaction, Purchase purchase) {
         getTransaction.setTransactionType(TransactionType.PURCHASE);
         getTransaction.setDescription("Bought " + purchase.getPurchasedModel());
+    }
+
+    default Purchase getPurchaseBasedOnInvestModel(InvestModel investModel) {
+        Purchase purchase = new Purchase();
+        purchase.setPurchasedModel(investModel.getDetails().getInvestModelLevel());
+        purchase.setTransactionAmount(investModel.getDetails().getPriceAmount());
+        return purchase;
     }
 }

@@ -38,6 +38,7 @@ public class WestWalletService {
             String url = "https://api.westwallet.io/address/create_invoice";
             String json = """
                 {"currencies": ["%s"], "amount": "%.2f", "amount_in_usd": true, "ipn_url": "%s", "success_url": "https://www.youtube.com/", "ttl": 15, "label": "%s"}""";
+            topUpAmount = topUpAmount == null ? 0 : topUpAmount;
             json = String.format(Locale.US, json, cryptoCurrencyType, topUpAmount, linkToApiListener, userLogin);
 
             return sendRequestWithCertainParams(timestamp, json, url, httpClient);

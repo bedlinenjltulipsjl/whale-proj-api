@@ -1,28 +1,28 @@
 package dev.guarmo.whales.model.investmodel;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@AllArgsConstructor
+@Builder
+@NoArgsConstructor
 public class InvestModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String naming;
-    private Double priceAmount;
     private Integer cyclesCount;
-    private Integer cyclesBeforeFreezeNumber;
-    private Integer cyclesBeforeFinishedNumber;
     private InvestModelStatus investModelStatus;
-    private InvestModelLevel investModelLevel;
+
     @Column(updatable = false)
     private LocalDateTime unlockDate;
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+    @ManyToOne
+    private InvestModelsDetails details;
 }

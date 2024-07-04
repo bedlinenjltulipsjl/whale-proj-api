@@ -1,7 +1,9 @@
 package dev.guarmo.whales.controller;
 
+import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.transaction.deposit.dto.PostDepositDto;
 import dev.guarmo.whales.model.transaction.deposit.mapper.DepositMapper;
+import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.service.DepositService;
 import dev.guarmo.whales.teleg.TelegramService;
 import lombok.RequiredArgsConstructor;
@@ -32,10 +34,10 @@ public class InstantPayNotifyController {
         PostDepositDto postModel = depositMapper.toPostModel(formData);
 
         if (Objects.equals(postModel.getStatus(), TRAN_FINISHED_STATUS)) {
-            depositService.linkDepositToUser(
+            depositService.linkAndSaveDepositToUserByTranId(
                     postModel.getTransactionId());
         }
-        log.info("PAYMENT RECEIVED: {}", postModel);
+        log.info("Payment received: {}", postModel);
         telegramService.sendNotificationAboutSuccessTransaction(postModel);
 
         return ResponseEntity.ok("Thanks, notification received");

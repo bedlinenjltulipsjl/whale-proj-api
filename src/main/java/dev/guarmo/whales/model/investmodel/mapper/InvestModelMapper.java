@@ -15,5 +15,10 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(config = MapperConfig.class)
 public interface InvestModelMapper {
+    @Mapping(target = "naming", source = "details.naming")
+    @Mapping(target = "priceAmount", source = "details.priceAmount")
+    @Mapping(target = "cyclesBeforeFreezeNumber", source = "details.cyclesBeforeFreezeNumber")
+    @Mapping(target = "cyclesBeforeFinishedNumber", source = "details.cyclesBeforeFinishedNumber")
+    @Mapping(target = "investModelLevel", source = "details.investModelLevel")
     GetInvestModel toGetDto(InvestModel investModel);
 }

@@ -14,11 +14,6 @@ import java.util.List;
 public class PurchaseController {
     private final PurchaseService purchaseService;
 
-    @GetMapping
-    public List<GetPurchaseDto> getPurchaseDtoList(Authentication authentication) {
-        return purchaseService.getPurchaseDtoList(authentication.getName());
-    }
-
 //    @PostMapping
 //    public GetPurchaseDto addPurchaseToUser(@RequestBody PostPurchaseDto purchase, Authentication authentication) {
 //        return purchaseService.addPurchaseToUser(purchase, authentication.getName());

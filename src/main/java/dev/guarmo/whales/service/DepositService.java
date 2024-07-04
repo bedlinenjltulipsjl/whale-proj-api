@@ -2,6 +2,7 @@ package dev.guarmo.whales.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import dev.guarmo.whales.helper.UserHelper;
+import dev.guarmo.whales.helper.UserSaver;
 import dev.guarmo.whales.model.currency.CryptoCurrency;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
 import dev.guarmo.whales.model.transaction.deposit.dto.GetDepositDto;
@@ -22,36 +23,47 @@ public class DepositService {
     private final WestWalletService westWalletService;
     private final CryptoConvertService cryptoConvertService;
     private final UserHelper userHelper;
+    private final UserSaver userSaver;
 
     // From west wallet post request we get transaction ID
     // Then we find transaction with this ID in west wallet DB and add it to user
-    public GetDepositDto linkDepositToUser(long tranId) {
+    public UserCredentials linkAndSaveDepositToUserByTranId(long tranId) {
         String tranAsJson = westWalletService.getInfoForIncomeTransaction(tranId);
         try {
             PostDepositDto postTranDto = depositMapper.fromJsonToPost(tranAsJson);
 
-            CryptoCurrency coinPriceInUsd = cryptoConvertService.getCoinPriceInUsd(postTranDto.getCurrency());
-            postTranDto.setTransactionAmount(postTranDto.getTransactionAmount() * coinPriceInUsd.getPriceInUsd());
-
-            return saveAndLinkDepositToUser(postTranDto);
+            // User login is saved as label in transaction
+            String userLogin = postTranDto.getLabel();
+            UserCredentials userCredentials = userHelper.findByLoginModel(userLogin);
+            UserCredentials updated = linkDepositToUserChangeBalance(postTranDto, userCredentials);
+            return userSaver.save(updated);
         } catch (JsonProcessingException e) {
             log.error("Error when parsing returned transaction body as JSON: {}", e.getMessage());
             throw new RuntimeException("Error when parsing returned transaction body as JSON: {}", e);
         }
     }
 
-    private UserCredentials saveAndLinkDepositToUser(PostDepositDto postTranDto) {
-        Deposit savedTran = depositRepo.save(depositMapper.toModel(postTranDto));
-        // User login saved as label in transaction
-        String userLogin = postTranDto.getLabel();
-        UserCredentials userCredentials = userHelper.findByLoginModel(userLogin);
+    private UserCredentials linkDepositToUserChangeBalance(
+            PostDepositDto postTranDto,
+            UserCredentials userCredentials) {
 
+        // We receive price of transaction in coins, but we
+        // Need to add price in USD to user balance, so convert
+        CryptoCurrency coinPriceInUsd = cryptoConvertService.getCoinPriceInUsd(postTranDto.getCurrency());
+        Double tranAmountInUsd = postTranDto.getTransactionAmount() * coinPriceInUsd.getPriceInUsd();
+        log.info("Linking deposit to user changing balance. From {}: {} to USD: {}",
+                postTranDto.getCurrency(),
+                postTranDto.getTransactionAmount(),
+                tranAmountInUsd);
+
+        postTranDto.setTransactionAmount(tranAmountInUsd);
+        Deposit savedTran = depositRepo.save(depositMapper.toModel(postTranDto));
 
         userCredentials.getDeposits().add(savedTran);
         userCredentials.setBalanceAmount(
                 userCredentials.getBalanceAmount()
                 + savedTran.getTransactionAmount());
 
-        return depositMapper.toGetDto(savedTran);
+        return userCredentials;
     }
 }

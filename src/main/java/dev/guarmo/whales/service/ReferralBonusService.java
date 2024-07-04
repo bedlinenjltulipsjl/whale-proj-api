@@ -5,7 +5,6 @@ import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
-import dev.guarmo.whales.model.transaction.income.Income;
 import dev.guarmo.whales.model.transaction.income.dto.GetIncomeDto;
 import dev.guarmo.whales.model.transaction.income.mapper.IncomeMapper;
 import dev.guarmo.whales.model.user.UserCredentials;
@@ -22,34 +21,32 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ReferralBonusService {
-    private final InvestModelHelper investModelHelper;
     private final UserHelper userHelper;
     @Value("${referral.bonus.part}")
     private Double bonusInPercentsFromPurchase;
-    @Value("${app.admin.name}")
+    @Value("${app.admin.login}")
     private String adminLogin;
     @Value("${search.referral.depth}")
     private Integer maxRefDepthSearch;
-    private final IncomeMapper incomeMapper;
     private final IncomeService incomeService;
 
-    public GetIncomeDto setRandomlyIncomeToOneOfTopTenReferrals(
+    public UserCredentials linkBonusToOneOfTenReferrals(
             Double purchaseAmount,
             InvestModelLevel investModelType,
             UserCredentials userCredentials) {
 
         UserCredentials randomFromTopTenReferrals = getRandomFromTopTenReferrals(userCredentials, investModelType);
-        Income addedBonusToUser = incomeService.createAndAddBonusToUser(
+        UserCredentials randomUserWithLinkedBonus = incomeService.createAndLinkBonusToUser(
                 purchaseAmount,
                 bonusInPercentsFromPurchase,
                 investModelType,
                 userCredentials,
                 randomFromTopTenReferrals
         );
-        InvestModel investModel = addCyclesToTableAfterAddingIncome(investModelType, randomFromTopTenReferrals);
-        log.info("Added this bonus: {} to user: {}",  addedBonusToUser, randomFromTopTenReferrals);
-
-        return incomeMapper.toGetDto(addedBonusToUser);
+//        InvestModel investModel = investModelService.addCyclesToTableAfterAddingIncome(
+//        investModelType, randomFromTopTenReferrals);
+        log.info("Link bonus to user: {}", randomUserWithLinkedBonus);
+        return randomUserWithLinkedBonus;
     }
 
     private UserCredentials getRandomFromTopTenReferrals(
@@ -78,36 +75,17 @@ public class ReferralBonusService {
         }
     }
 
-    public List<UserCredentials> filterUsersByModelLevelAndStatus(List<UserCredentials> users, InvestModelLevel desiredLevel, InvestModelStatus desiredStatus) {
-        List<UserCredentials> collect = users.stream()
+    public List<UserCredentials> filterUsersByModelLevelAndStatus(
+            List<UserCredentials> users,
+            InvestModelLevel desiredLevel,
+            InvestModelStatus desiredStatus) {
+
+        return users.stream()
                 .filter(user -> user.getInvestModels().stream()
-                        .anyMatch(model -> model.getInvestModelLevel() == desiredLevel && model.getInvestModelStatus().equals(desiredStatus)))
+                        .anyMatch(model -> model
+                                .getDetails()
+                                .getInvestModelLevel() == desiredLevel
+                                && model.getInvestModelStatus().equals(desiredStatus)))
                 .collect(Collectors.toList());
-        return collect;
-    }
-
-    private InvestModel addCyclesToTableAfterAddingIncome(
-            InvestModelLevel level,
-            UserCredentials owner) {
-
-        InvestModel currentInvestModel = owner
-                .getInvestModels()
-                .stream()
-                .filter(e -> e.getInvestModelLevel().equals(level)).findFirst()
-                .orElseThrow();
-        InvestModelLevel nextLevelAsEnum = investModelHelper.getNextLevelAsEnum(level);
-
-        InvestModel nextInvestModel = owner
-                .getInvestModels()
-                .stream()
-                .filter(e -> e.getInvestModelLevel().equals(nextLevelAsEnum))
-                .findFirst()
-                .orElseThrow();
-
-        InvestModel currentModifiedInvestModel = investModelHelper
-                .addCyclesToInvestModel(currentInvestModel, nextInvestModel);
-        log.info("Added one cycle this invest entity of user: {} {}",
-                currentModifiedInvestModel, owner);
-        return currentModifiedInvestModel;
     }
 }

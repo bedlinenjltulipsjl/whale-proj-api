@@ -16,11 +16,16 @@ public interface WithdrawMapper {
     GetWithdrawDto toGetDto(MoneyWithdraw moneyWithdraw);
 
     MoneyWithdraw toModel(PostWithdrawDto postWithdrawDto);
+
     @Mapping(target = "description", ignore = true)
     GetTransaction toGetTransaction(MoneyWithdraw withdraw);
+
     @AfterMapping
     default void setTransactionDesc(@MappingTarget GetTransaction getTransaction, MoneyWithdraw withdraw) {
         getTransaction.setTransactionType(TransactionType.WITHDRAW);
-        getTransaction.setDescription(withdraw.getCurrency() + " withdraw from " + withdraw.getCryptoAddress());
+        String desc = withdraw.getCurrency()
+                + " withdraw to " + withdraw.getCryptoAddress()
+                + " [" + withdraw.getWithdrawStatus().name() + "]";
+        getTransaction.setDescription(desc);
     }
 }

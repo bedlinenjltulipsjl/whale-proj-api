@@ -3,7 +3,6 @@ package dev.guarmo.whales.controller;
 import dev.guarmo.whales.model.transaction.invoice.dto.GenerateInvoiceDto;
 import dev.guarmo.whales.model.transaction.invoice.dto.GetInvoiceDto;
 import dev.guarmo.whales.service.InvoiceGeneratorService;
-import dev.guarmo.whales.service.DepositService;
 import dev.guarmo.whales.teleg.TelegramService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/deposits")
 @CrossOrigin(allowedHeaders = "*")
-public class DepositController {
+public class PaymentController {
     private final InvoiceGeneratorService invoiceGeneratorService;
     private final TelegramService telegramService;
 

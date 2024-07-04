@@ -82,7 +82,7 @@ public interface UserMapper {
         dto.setBottomReferrals(referrals);
     }
 
-    @Mapping(target = "investedAmount", source = "login", qualifiedByName = "getInvestedAmount")
+    @Mapping(target = "investedAmount", source = "login", qualifiedByName = "getBottomReferralsAmount")
     @Mapping(target = "earnedAmount", source = "login", qualifiedByName = "getEarnedAmount")
     GetTopUserDto toGetTopUserDto(UserCredentials user);
 }

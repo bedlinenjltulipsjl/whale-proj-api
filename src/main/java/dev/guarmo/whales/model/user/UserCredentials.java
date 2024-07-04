@@ -6,15 +6,14 @@ import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
 import dev.guarmo.whales.model.transaction.withdraw.MoneyWithdraw;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SoftDelete;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +21,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@SoftDelete
 public class UserCredentials implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,7 +1,9 @@
 package dev.guarmo.whales.controller;
 
+import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.dto.GetInvestModel;
 import dev.guarmo.whales.model.investmodel.dto.PostInvestModel;
+import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.service.InvestModelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -16,14 +18,11 @@ import java.util.List;
 @CrossOrigin(allowedHeaders = "*")
 public class InvestEntityController {
     private final InvestModelService investModelService;
-    @GetMapping
-    public List<GetInvestModel> buyTable(Authentication authentication) {
-        return investModelService.getAllInvestModels(authentication.getName());
-    }
-
 
     @PatchMapping
-    public GetInvestModel buyTable(@RequestBody PostInvestModel investModel, Authentication authentication) {
+    public InvestModel buyTable(
+            @RequestBody PostInvestModel investModel,
+            Authentication authentication) {
         return investModelService.buyInvestModel(investModel, authentication.getName());
     }
 }

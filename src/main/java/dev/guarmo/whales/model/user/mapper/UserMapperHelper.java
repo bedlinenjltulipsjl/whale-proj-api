@@ -41,10 +41,10 @@ public class UserMapperHelper {
         return allTransactionService.getAllTypesOfTransactions(login);
     }
 
-    @Named("getInvestedAmount")
-    public double getInvestedAmount(String login) {
+    @Named("getBottomReferralsAmount")
+    public int getInvestedAmount(String login) {
         UserCredentials userCredentials = userCredentialsRepo.findByLogin(login).orElseThrow();
-        return userCredentials.getDeposits().stream().mapToDouble(Deposit::getTransactionAmount).sum();
+        return userCredentials.getBottomReferrals().size();
     }
 
     @Named("getEarnedAmount")
