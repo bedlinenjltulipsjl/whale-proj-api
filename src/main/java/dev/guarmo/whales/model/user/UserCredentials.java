@@ -16,7 +16,18 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
-@Data
+@Setter
+@Getter
+@ToString(exclude = {
+        "password",
+        "bottomReferrals",
+        "upperReferral",
+        "withdraws",
+        "deposits",
+        "incomes",
+        "purchases",
+        "reflink",
+})
 @Entity
 @SoftDelete
 @NoArgsConstructor

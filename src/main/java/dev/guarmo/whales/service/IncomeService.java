@@ -85,7 +85,6 @@ public class IncomeService {
                 investModelLevel, userThatSendsBonuses,
                 bonusTo, IncomeType.MAIN);
 
-
         InvestModel tableThatGivesMoney = investModelHelper.findUserInvestModelByLevel(userWithLinkedBonus, investModelLevel);
         investModelHelper.tableReceivedMainBonus(tableThatGivesMoney, userWithLinkedBonus);
 
@@ -117,13 +116,16 @@ public class IncomeService {
                 userThatSendsBonuses,
                 incomeType);
 
-//        Income savedIncome = incomeRepo.save(income);
+        Income savedIncome = incomeRepo.save(income);
 
-//        bonusTo.getIncomes().add(savedIncome);
+        bonusTo.getIncomes().add(savedIncome);
+        bonusTo.setBalanceAmount(
+                bonusTo.getBalanceAmount()
+                        + savedIncome.getTransactionAmount());
+//        bonusTo.getIncomes().add(income);
 //        bonusTo.setBalanceAmount(
 //                bonusTo.getBalanceAmount()
-//                        + savedIncome.getTransactionAmount());
-
+//                        + income.getTransactionAmount());
         return bonusTo;
     }
 }

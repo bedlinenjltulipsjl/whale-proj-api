@@ -1,10 +1,10 @@
 package dev.guarmo.whales.service;
 
-import dev.guarmo.whales.helper.InvestModelHelper;
 import dev.guarmo.whales.helper.UserSaver;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.repository.PurchaseRepo;
+import dev.guarmo.whales.teleg.TelegramService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class PurchaseService {
     private final IncomeService incomeService;
     private final ReferralBonusService referralBonusService;
     private final UserSaver userSaver;
-    private final InvestModelHelper investModelHelper;
+    private final TelegramService telegramService;
 
     public void linkAndSavePurchaseToUserAndBonusesToReferrals(
             Purchase purchase, UserCredentials userModel) {
@@ -36,21 +36,23 @@ public class PurchaseService {
                 purchase.getTransactionAmount(),
                 purchase.getPurchasedModel(),
                 userModel);
-
         userSaver.save(userWithMainBonusLinked);
     }
 
     public UserCredentials linkPurchaseToUser(Purchase model, UserCredentials byLoginModel) {
-//        Purchase saved = purchaseRepo.save(model);
+        Purchase saved = purchaseRepo.save(model);
 
-//        byLoginModel.getPurchases().add(saved);
-//        byLoginModel.setBalanceAmount(
-//                byLoginModel.getBalanceAmount()
-//                        - saved.getTransactionAmount());
-        byLoginModel.getPurchases().add(model);
+        byLoginModel.getPurchases().add(saved);
         byLoginModel.setBalanceAmount(
                 byLoginModel.getBalanceAmount()
-                        - model.getTransactionAmount());
+                        - saved.getTransactionAmount());
+//        byLoginModel.getPurchases().add(model);
+//        byLoginModel.setBalanceAmount(
+//                byLoginModel.getBalanceAmount()
+//                        - model.getTransactionAmount());
+        String msg = String.format("Purchase from %s that causes income:\n\nPurchase: %s", byLoginModel, saved);
+        log.info(msg);
+        telegramService.sendTextNotification(msg);
         return byLoginModel;
     }
 }

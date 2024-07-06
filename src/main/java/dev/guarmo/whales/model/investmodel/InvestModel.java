@@ -5,7 +5,9 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
-@Data
+@Setter
+@Getter
+@ToString(exclude = {"details"})
 @Entity
 @AllArgsConstructor
 @Builder

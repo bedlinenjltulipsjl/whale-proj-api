@@ -74,6 +74,7 @@ public class InvestModelService {
     private UserCredentials changeStatesAfterBuyingInvestEntity(UserCredentials userCredentials,
                                                                InvestModel investModelToBeBought) {
         investModelToBeBought.setInvestModelStatus(InvestModelStatus.JUSTBOUGHT);
+        investModelRepo.save(investModelToBeBought);
         return userCredentials;
         // DISABLE PREV FROZEN ELEMENT HERE, OR ALL FROZEN, DEPENDING ON WHAT ...
     }

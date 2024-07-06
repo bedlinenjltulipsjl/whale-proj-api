@@ -5,12 +5,14 @@ import dev.guarmo.whales.model.transaction.PayTransaction;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
 @Setter
 @Getter
+@ToString
 public class Purchase extends PayTransaction {
     private InvestModelLevel purchasedModel;
 }
