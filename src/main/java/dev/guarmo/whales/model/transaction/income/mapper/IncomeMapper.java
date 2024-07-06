@@ -31,7 +31,11 @@ public interface IncomeMapper {
     default void setTransactionDesc(@MappingTarget GetTransaction getTransaction, Income income) {
 //        getTransaction.setCreatedAt(getTransaction.getCreatedAt().minusDays(1));
         getTransaction.setTransactionType(TransactionType.INCOME);
-        getTransaction.setDescription("Referral bonus for " + InvestModelHelper.getNameByInvestModelLevel(income.getPurchasedModel()) + " from " + income.getIncomeCausedByUser().getName());
+        if (income.getIncomeType().equals(IncomeType.MAIN)) {
+            getTransaction.setDescription("Earning 74% bonus of " + InvestModelHelper.getNameByInvestModelLevel(income.getPurchasedModel()) + " price");
+        } else if (income.getIncomeType().equals(IncomeType.REFERRAL)) {
+            getTransaction.setDescription("Referral bonus for " + InvestModelHelper.getNameByInvestModelLevel(income.getPurchasedModel()) + " from " + income.getIncomeCausedByUser().getName());
+        }
     }
 
     default Income createBonusWithSenderAndAmount(Double amount,

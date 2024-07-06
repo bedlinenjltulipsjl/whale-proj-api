@@ -85,7 +85,7 @@ public class InvestModelHelper {
 
         // Cycle passes, make every JUST BOUGHT of this table BOUGHT
         // Reset receive bonus flag in each TABLE of this level
-        if (investModelDetails.getCyclesCount() > investModelDetails.getCyclesBeforeFinishedNumber()) {
+        if (investModelDetails.getCyclesCount() >= investModelDetails.getCyclesBeforeFinishedNumber()) {
             // FIND ALL TABLES OF THIS LEVEL
             List<InvestModel> filteredByLevel = investModelRepo.findAll().stream().filter(i -> i.getDetails().getInvestModelLevel().equals(investModelDetails.getInvestModelLevel())).toList();
 
@@ -98,7 +98,7 @@ public class InvestModelHelper {
             filteredByLevel.stream().filter(i -> i.getInvestModelStatus().equals(InvestModelStatus.JUSTBOUGHT)).forEach(i -> i.setInvestModelStatus(InvestModelStatus.BOUGHT));
 
             investModelDetails.setCyclesBeforeFinishedNumber(notReferralTable.getDetails().getCyclesBeforeFinishedNumber() * 2);
-            investModelDetails.setCyclesCount(1);
+            investModelDetails.setCyclesCount(0);
 
             List<InvestModel> filteredByLevelAndSaved = investModelRepo.saveAll(filteredByLevel);
             String formated3 = String.format("AFTER: Cycle ended. Updating info in every table of %s after cycle is finished\n\n%s", investModelDetails.getInvestModelLevel(), filteredByLevelAndSaved);
