@@ -1,10 +1,9 @@
 package dev.guarmo.whales.model.investmodel;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,10 +17,12 @@ public class InvestModelsDetails {
     private Long id;
     private String naming;
     private Double priceAmount;
-    private Integer cyclesBeforeFreezeNumber;
+    private Integer cyclesCount;
     private Integer cyclesBeforeFinishedNumber;
 
     private InvestModelLevel investModelLevel;
     private InvestModelStatus defaultStatus;
 
+    @Column(updatable = false)
+    private LocalDateTime unlockDate;
 }

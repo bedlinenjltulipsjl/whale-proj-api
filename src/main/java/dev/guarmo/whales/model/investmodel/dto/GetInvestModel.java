@@ -4,7 +4,6 @@ import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 
 @Setter
@@ -14,8 +13,15 @@ public class GetInvestModel {
     private String naming;
     private Double priceAmount;
     private Integer cyclesCount;
-    private Integer cyclesBeforeFreezeNumber;
+
+    private Integer receivedBonusAtCycle;
+    private Boolean isReceivedBonus;
+
     private Integer cyclesBeforeFinishedNumber;
+
+    private Double partnerBonusAmount;
+    private Double mainBonusAmount;
+
     private InvestModelStatus investModelStatus;
     private InvestModelLevel investModelLevel;
     private LocalDateTime unlockDate;

@@ -18,47 +18,47 @@ public class InvestModelDetailsService {
     public List<InvestModelsDetails> saveBaseValues() {
         List<InvestModelsDetails> investModelsDetails = new ArrayList<>();
         investModelsDetails.add(
-                buildInvestModelDetails("Private", 10.0, InvestModelLevel.LEVEL_1, 1000, 1000, InvestModelStatus.AVAILABLE));
+                buildInvestModelDetails("Private", 10.0, InvestModelLevel.LEVEL_1, 1, InvestModelStatus.AVAILABLE));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 1", 200.0, InvestModelLevel.LEVEL_2, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 1", 200.0, InvestModelLevel.LEVEL_2, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 2", 170.0, InvestModelLevel.LEVEL_3, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 2", 170.0, InvestModelLevel.LEVEL_3, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 3", 130.0, InvestModelLevel.LEVEL_4, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 3", 130.0, InvestModelLevel.LEVEL_4, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 4", 110.0, InvestModelLevel.LEVEL_5, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 4", 110.0, InvestModelLevel.LEVEL_5, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 5", 80.0, InvestModelLevel.LEVEL_6, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 5", 80.0, InvestModelLevel.LEVEL_6, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 6", 50.0, InvestModelLevel.LEVEL_7, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 6", 50.0, InvestModelLevel.LEVEL_7, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 7", 40.0, InvestModelLevel.LEVEL_8, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 7", 40.0, InvestModelLevel.LEVEL_8, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 8", 30.0, InvestModelLevel.LEVEL_9, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 8", 30.0, InvestModelLevel.LEVEL_9, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 9", 20.0, InvestModelLevel.LEVEL_10, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 9", 20.0, InvestModelLevel.LEVEL_10, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 10", 15.0, InvestModelLevel.LEVEL_11, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 10", 15.0, InvestModelLevel.LEVEL_11, 1, InvestModelStatus.LOCKED));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 11", 10.0, InvestModelLevel.LEVEL_12, 1000, 1000, InvestModelStatus.LOCKED));
+                buildInvestModelDetails("Lvl 11", 10.0, InvestModelLevel.LEVEL_12, 1, InvestModelStatus.LOCKED));
 
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 12", 100.0, InvestModelLevel.LEVEL_13, 1000, 1000, InvestModelStatus.SPECIALS));
+                buildInvestModelDetails("Lvl 12", 100.0, InvestModelLevel.LEVEL_13, 1, InvestModelStatus.SPECIALS));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 13", 150.0, InvestModelLevel.LEVEL_14, 1000, 1000, InvestModelStatus.SPECIALS));
+                buildInvestModelDetails("Lvl 13", 150.0, InvestModelLevel.LEVEL_14, 1, InvestModelStatus.SPECIALS));
         investModelsDetails.add(
-                buildInvestModelDetails("Lvl 14", 200.0, InvestModelLevel.LEVEL_15, 1000, 1000, InvestModelStatus.SPECIALS));
+                buildInvestModelDetails("Lvl 14", 200.0, InvestModelLevel.LEVEL_15, 1, InvestModelStatus.SPECIALS));
 
         return investModelDetailsRepo.saveAll(investModelsDetails);
     }
 
-    private static InvestModelsDetails buildInvestModelDetails(String naming, double priceAmount, InvestModelLevel level, int cyclesBeforeFinishedNumber, int cyclesBeforeFreezeNumber, InvestModelStatus investModelStatus) {
+    private static InvestModelsDetails buildInvestModelDetails(String naming, double priceAmount, InvestModelLevel level, int cyclesBeforeFinishedNumber, InvestModelStatus investModelStatus) {
         return InvestModelsDetails.builder()
                 .naming(naming)
                 .priceAmount(priceAmount)
                 .investModelLevel(level)
+                .cyclesCount(0)
                 .cyclesBeforeFinishedNumber(cyclesBeforeFinishedNumber)
-                .cyclesBeforeFreezeNumber(cyclesBeforeFreezeNumber)
                 .defaultStatus(investModelStatus)
                 .build();
     }

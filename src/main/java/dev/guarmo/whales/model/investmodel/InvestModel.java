@@ -14,15 +14,14 @@ public class InvestModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer cyclesCount;
+    private Integer receivedBonusAtCycle;
     private InvestModelStatus investModelStatus;
+    private Boolean isReceivedBonus;
 
-    @Column(updatable = false)
-    private LocalDateTime unlockDate;
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private InvestModelsDetails details;
 }

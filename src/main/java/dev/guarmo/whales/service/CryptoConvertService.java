@@ -30,9 +30,9 @@ public class CryptoConvertService {
             CryptoCurrency.builder().type(CryptoCurrencyType.BTC.name()).code("Qwsogvtv82FCd").build(),
             CryptoCurrency.builder().type(CryptoCurrencyType.ETH.name()).code("razxDUgYGNAdQ").build(),
             CryptoCurrency.builder().type(CryptoCurrencyType.TON.name()).code("67YlI0K1b").build(),
-            CryptoCurrency.builder().type(CryptoCurrencyType.BNB.name()).code("WcwrkfNI4FUAe").build(),
+            CryptoCurrency.builder().type(CryptoCurrencyType.BNB20.name()).code("WcwrkfNI4FUAe").build(),
             CryptoCurrency.builder().type(CryptoCurrencyType.DASH.name()).code("C9DwH-T7MEGmo").build(),
-            CryptoCurrency.builder().type(CryptoCurrencyType.USDT.name()).code("HIVsRcGKkPFtW").build()
+            CryptoCurrency.builder().type(CryptoCurrencyType.USDTTRC.name()).code("HIVsRcGKkPFtW").build()
     );
 
     public List<CryptoCurrency> fillWithBaseData() {

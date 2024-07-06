@@ -1,6 +1,6 @@
 package dev.guarmo.whales.service;
 
-import dev.guarmo.whales.helper.UserHelper;
+import dev.guarmo.whales.helper.InvestModelHelper;
 import dev.guarmo.whales.helper.UserSaver;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.user.UserCredentials;
@@ -17,8 +17,8 @@ public class PurchaseService {
     private final PurchaseRepo purchaseRepo;
     private final IncomeService incomeService;
     private final ReferralBonusService referralBonusService;
-    private final UserHelper userHelper;
     private final UserSaver userSaver;
+    private final InvestModelHelper investModelHelper;
 
     public void linkAndSavePurchaseToUserAndBonusesToReferrals(
             Purchase purchase, UserCredentials userModel) {
@@ -32,20 +32,25 @@ public class PurchaseService {
                 modelWithLinkedPurchase);
         userSaver.saveAll(threeUsersWithLinkedBonuses);
 
-        UserCredentials userWithMainBonusLinked = referralBonusService.linkBonusToOneOfTenReferrals(
+        UserCredentials userWithMainBonusLinked = referralBonusService.linkMainBonusToRandomReferral(
                 purchase.getTransactionAmount(),
                 purchase.getPurchasedModel(),
                 userModel);
+
         userSaver.save(userWithMainBonusLinked);
     }
 
     public UserCredentials linkPurchaseToUser(Purchase model, UserCredentials byLoginModel) {
-        Purchase saved = purchaseRepo.save(model);
+//        Purchase saved = purchaseRepo.save(model);
 
-        byLoginModel.getPurchases().add(saved);
+//        byLoginModel.getPurchases().add(saved);
+//        byLoginModel.setBalanceAmount(
+//                byLoginModel.getBalanceAmount()
+//                        - saved.getTransactionAmount());
+        byLoginModel.getPurchases().add(model);
         byLoginModel.setBalanceAmount(
                 byLoginModel.getBalanceAmount()
-                        - saved.getTransactionAmount());
+                        - model.getTransactionAmount());
         return byLoginModel;
     }
 }

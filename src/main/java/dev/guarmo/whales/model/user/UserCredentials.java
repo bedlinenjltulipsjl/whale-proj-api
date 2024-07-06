@@ -6,9 +6,7 @@ import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.deposit.Deposit;
 import dev.guarmo.whales.model.transaction.withdraw.MoneyWithdraw;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SoftDelete;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,10 +16,10 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
 @SoftDelete
+@NoArgsConstructor
 public class UserCredentials implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,12 +41,12 @@ public class UserCredentials implements UserDetails {
     private List<Deposit> deposits;
     @OneToMany
     private List<MoneyWithdraw> withdraws;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private List<Income> incomes;
     @OneToMany
     private List<Purchase> purchases;
     private String reflink;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     private List<InvestModel> investModels;
     @OneToMany
     private List<UserCredentials> bottomReferrals;

@@ -1,11 +1,11 @@
 package dev.guarmo.whales.model.investmodel;
 
 public enum InvestModelStatus {
-    FINISHED,
-    FROZEN,
-    BOUGHT,
     AVAILABLE,
-    MONEYLOCKED,
+    JUSTBOUGHT,
+    BOUGHT,
+    FROZEN,
+    FINISHED,
     TIMELOCKED,
     LOCKED,
     SPECIALS

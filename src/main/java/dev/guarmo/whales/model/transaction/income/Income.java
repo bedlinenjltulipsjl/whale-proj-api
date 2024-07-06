@@ -14,4 +14,6 @@ public class Income extends PayTransaction {
     @ManyToOne
     private UserCredentials incomeCausedByUser;
     private InvestModelLevel purchasedModel;
+    private IncomeType incomeType;
+    private Integer receivedLastBonusAt;
 }

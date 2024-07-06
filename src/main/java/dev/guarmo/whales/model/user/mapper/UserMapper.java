@@ -57,30 +57,30 @@ public interface UserMapper {
 //    @Mapping(target = "transactions", source = "login", qualifiedByName = "mapTransactionsToUser")
     GetFullDto toFullGetDto(UserCredentials user);
 
-    @AfterMapping
-    default void mapReferralsAfterMapping(@MappingTarget GetFullDto dto, UserCredentials model) {
-        mapReferrals(dto, model, 0);
-    }
-
-    default void mapReferrals(GetFullDto dto, UserCredentials model, int level) {
-        dto.setTreeLevel(level);
-
-        // Sets recursion basis (how deep fetch referrals)
-        if (level >= 3) {
-            dto.setBottomReferrals(Collections.emptyList());
-            return;
-        }
-
-        List<GetFullDto> referrals = model.getBottomReferrals()
-                .stream()
-                .map(referral -> {
-                    GetFullDto referralDto = toFullGetDto(referral);
-                    mapReferrals(referralDto, referral, level + 1);
-                    return referralDto;
-                })
-                .collect(Collectors.toList());
-        dto.setBottomReferrals(referrals);
-    }
+//    @AfterMapping
+//    default void mapReferralsAfterMapping(@MappingTarget GetFullDto dto, UserCredentials model) {
+//        mapReferrals(dto, model, 0);
+//    }
+//
+//    default void mapReferrals(GetFullDto dto, UserCredentials model, int level) {
+//        dto.setTreeLevel(level);
+//
+//        // Sets recursion basis (how deep fetch referrals)
+//        if (level >= 3) {
+//            dto.setBottomReferrals(Collections.emptyList());
+//            return;
+//        }
+//
+//        List<GetFullDto> referrals = model.getBottomReferrals()
+//                .stream()
+//                .map(referral -> {
+//                    GetFullDto referralDto = toFullGetDto(referral);
+//                    mapReferrals(referralDto, referral, level + 1);
+//                    return referralDto;
+//                })
+//                .collect(Collectors.toList());
+//        dto.setBottomReferrals(referrals);
+//    }
 
     @Mapping(target = "investedAmount", source = "login", qualifiedByName = "getBottomReferralsAmount")
     @Mapping(target = "earnedAmount", source = "login", qualifiedByName = "getEarnedAmount")

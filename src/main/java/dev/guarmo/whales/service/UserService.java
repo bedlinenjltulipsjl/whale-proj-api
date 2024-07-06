@@ -4,6 +4,8 @@ import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.investmodel.InvestModel;
 import dev.guarmo.whales.model.investmodel.dto.GetInvestModel;
 import dev.guarmo.whales.model.investmodel.mapper.InvestModelMapper;
+import dev.guarmo.whales.model.transaction.PayTransaction;
+import dev.guarmo.whales.model.transaction.income.IncomeType;
 import dev.guarmo.whales.model.user.RoleStatus;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.model.user.dto.*;
@@ -16,7 +18,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -39,7 +40,7 @@ public class UserService {
         List<InvestModel> generatedInvestModels =
                 investModelService.generateDefaultInvestModels();
         model.setInvestModels(generatedInvestModels);
-        model.setBalanceAmount(10000);
+        model.setBalanceAmount(100);
 
         UserCredentials save = repository.save(model);
         UserCredentials upperReferral = model.getUpperReferral();
@@ -68,11 +69,40 @@ public class UserService {
         UserCredentials model = userHelper.findByLoginModel(name);
         GetFullDto fullGetDto = userMapper.toFullGetDto(model);
         fullGetDto.setTransactions(allTransactionService.getAllTypesOfTransactionsByUser(model));
+
         fullGetDto.setInvestModels(model
                 .getInvestModels()
                 .stream()
-                .map(investModelMapper::toGetDto)
+                .map(investModel -> {
+                     GetInvestModel dto = investModelMapper.toGetDto(investModel);
+                     dto.setMainBonusAmount(
+                             model.getIncomes()
+                                     .stream()
+                                     .filter(income -> income
+                                             .getIncomeType()
+                                             .equals(IncomeType.MAIN)
+                                             && income.getPurchasedModel()
+                                             .equals(investModel.getDetails().getInvestModelLevel())
+                                     )
+                                     .mapToDouble(PayTransaction::getTransactionAmount)
+                                     .sum()
+                     );
+                     dto.setPartnerBonusAmount(
+                             model.getIncomes()
+                                     .stream()
+                                     .filter(income -> income
+                                             .getIncomeType()
+                                             .equals(IncomeType.REFERRAL)
+                                             && income.getPurchasedModel()
+                                             .equals(investModel.getDetails().getInvestModelLevel())
+                                     )
+                                     .mapToDouble(PayTransaction::getTransactionAmount)
+                                     .sum()
+                     );
+                     return dto;
+                })
                 .toList());
+
         return fullGetDto;
     }
 
