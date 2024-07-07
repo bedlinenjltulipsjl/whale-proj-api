@@ -99,6 +99,18 @@ public class UserService {
                                      .mapToDouble(PayTransaction::getTransactionAmount)
                                      .sum()
                      );
+                     dto.setLostRefIncomeAmount(
+                             model.getIncomes()
+                                     .stream()
+                                     .filter(income -> income
+                                             .getIncomeType()
+                                             .equals(IncomeType.LOST)
+                                             && income.getPurchasedModel()
+                                             .equals(investModel.getDetails().getInvestModelLevel())
+                                     )
+                                     .mapToDouble(PayTransaction::getTransactionAmount)
+                                     .sum()
+                     );
                      return dto;
                 })
                 .toList());

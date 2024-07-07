@@ -10,6 +10,7 @@ import dev.guarmo.whales.model.transaction.income.IncomeType;
 import dev.guarmo.whales.model.transaction.income.mapper.IncomeMapper;
 import dev.guarmo.whales.model.user.UserCredentials;
 import dev.guarmo.whales.repository.IncomeRepo;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -31,35 +32,49 @@ public class IncomeService {
     private Double referralLvl3PartInPercents;
     @Value("${app.admin.login}")
     private String adminLogin;
+    private UserCredentials adminThatReceiveBonusWhenNobodyInLine;
 
+    @PostConstruct
+    private void init() {
+        adminThatReceiveBonusWhenNobodyInLine = userHelper.findByLoginModel(adminLogin);
+    }
 
     public List<UserCredentials> linkBonusToUpperReferrals(
             Double amount, InvestModelLevel investModelLevel,
             UserCredentials userThatSendsBonuses) {
 
-        UserCredentials adminThatReceiveBonusWhenNobodyInLine =
-                userHelper.findByLoginModel(adminLogin);
+        UserCredentials userThanGetsBonusLvl1 = getUpperReferralOrAdmin(
+                userThatSendsBonuses,
+                userThatSendsBonuses.getUpperReferral(),
+                investModelLevel,
+                referralLvl1PartInPercents,
+                amount
+        );
 
-        UserCredentials userThanGetsBonusLvl1 = getUpperReferralOrAdmin(userThatSendsBonuses.getUpperReferral(),
-                adminThatReceiveBonusWhenNobodyInLine, investModelLevel);
-        UserCredentials userThanGetsBonusLvl1Upd = createLinkAndSaveRefBonusToUser(amount, referralLvl1PartInPercents,
-                investModelLevel, userThatSendsBonuses, userThanGetsBonusLvl1);
+        UserCredentials userThanGetsBonusLvl2 = getUpperReferralOrAdmin(
+                userThatSendsBonuses,
+                userThanGetsBonusLvl1.getUpperReferral(),
+                investModelLevel,
+                referralLvl2PartInPercents,
+                amount
+        );
 
-        UserCredentials userThanGetsBonusLvl2 = getUpperReferralOrAdmin(userThanGetsBonusLvl1.getUpperReferral(),
-                adminThatReceiveBonusWhenNobodyInLine, investModelLevel);
-        UserCredentials userThanGetsBonusLvl2Upd = createLinkAndSaveRefBonusToUser(amount, referralLvl2PartInPercents,
-                investModelLevel, userThatSendsBonuses, userThanGetsBonusLvl2);
+        UserCredentials userThanGetsBonusLvl3 = getUpperReferralOrAdmin(
+                userThatSendsBonuses,
+                userThanGetsBonusLvl2.getUpperReferral(),
+                investModelLevel,
+                referralLvl3PartInPercents,
+                amount
+        );
 
-        UserCredentials userThanGetsBonusLvl3 = getUpperReferralOrAdmin(userThanGetsBonusLvl2.getUpperReferral(),
-                adminThatReceiveBonusWhenNobodyInLine, investModelLevel);
-        UserCredentials userThanGetsBonusLvl3Upd = createLinkAndSaveRefBonusToUser(amount, referralLvl3PartInPercents,
-                investModelLevel, userThatSendsBonuses, userThanGetsBonusLvl3);
-
-        return List.of(userThanGetsBonusLvl1Upd, userThanGetsBonusLvl2Upd, userThanGetsBonusLvl3Upd);
+        return List.of(userThanGetsBonusLvl1, userThanGetsBonusLvl2, userThanGetsBonusLvl3);
     }
 
-    private UserCredentials getUpperReferralOrAdmin(UserCredentials upperReferral,
-                                                    UserCredentials adminThatReceiveBonusWhenNobodyInLine, InvestModelLevel investModelLevel) {
+    private UserCredentials getUpperReferralOrAdmin(UserCredentials userThatSendsBonuses,
+                                                    UserCredentials upperReferral,
+                                                    InvestModelLevel investModelLevel,
+                                                    Double referralPartInPercents,
+                                                    Double amount) {
         if (upperReferral == null) {
             return adminThatReceiveBonusWhenNobodyInLine;
         }
@@ -67,9 +82,11 @@ public class IncomeService {
         if (upperReferralTable.getInvestModelStatus().equals(InvestModelStatus.BOUGHT)
                 || upperReferralTable.getInvestModelStatus().equals(InvestModelStatus.JUSTBOUGHT)
                 || upperReferralTable.getInvestModelStatus().equals(InvestModelStatus.FROZEN)) {
-            return upperReferral;
+            return createLinkAndSaveRefBonusToUser(amount, referralPartInPercents,
+                    investModelLevel, userThatSendsBonuses, upperReferral, IncomeType.REFERRAL);
         } else {
-            return adminThatReceiveBonusWhenNobodyInLine;
+            return createLinkAndSaveRefBonusToUser(amount, referralPartInPercents,
+                    investModelLevel, userThatSendsBonuses, upperReferral, IncomeType.LOST);
         }
 
     }
@@ -95,11 +112,12 @@ public class IncomeService {
                                                             double referralPartInPercents,
                                                             InvestModelLevel investModelLevel,
                                                             UserCredentials userThatSendsBonuses,
-                                                            UserCredentials bonusTo) {
+                                                            UserCredentials bonusTo,
+                                                           IncomeType incomeType) {
         return createLinkAndSaveBonusToUser(
                 amount, referralPartInPercents,
                 investModelLevel, userThatSendsBonuses,
-                bonusTo, IncomeType.REFERRAL);
+                bonusTo, incomeType);
     }
 
     private UserCredentials createLinkAndSaveBonusToUser(
@@ -117,11 +135,14 @@ public class IncomeService {
                 incomeType);
 
         Income savedIncome = incomeRepo.save(income);
-
         bonusTo.getIncomes().add(savedIncome);
-        bonusTo.setBalanceAmount(
-                bonusTo.getBalanceAmount()
-                        + savedIncome.getTransactionAmount());
+
+        if (incomeType.equals(IncomeType.REFERRAL)
+        || incomeType.equals(IncomeType.MAIN)) {
+            bonusTo.setBalanceAmount(
+                    bonusTo.getBalanceAmount()
+                            + savedIncome.getTransactionAmount());
+        }
 //        bonusTo.getIncomes().add(income);
 //        bonusTo.setBalanceAmount(
 //                bonusTo.getBalanceAmount()

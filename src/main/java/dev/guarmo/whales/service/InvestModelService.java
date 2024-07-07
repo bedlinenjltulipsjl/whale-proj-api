@@ -3,8 +3,10 @@ package dev.guarmo.whales.service;
 import dev.guarmo.whales.helper.InvestModelHelper;
 import dev.guarmo.whales.helper.UserHelper;
 import dev.guarmo.whales.model.investmodel.InvestModel;
+import dev.guarmo.whales.model.investmodel.InvestModelLevel;
 import dev.guarmo.whales.model.investmodel.InvestModelStatus;
 import dev.guarmo.whales.model.investmodel.dto.PostInvestModel;
+import dev.guarmo.whales.model.transaction.income.IncomeType;
 import dev.guarmo.whales.model.transaction.purchase.Purchase;
 import dev.guarmo.whales.model.transaction.purchase.mapper.PurchaseMapper;
 import dev.guarmo.whales.model.user.UserCredentials;
@@ -12,6 +14,8 @@ import dev.guarmo.whales.repository.InvestModelRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -47,8 +51,6 @@ public class InvestModelService {
         UserCredentials model = userHelper.findByLoginModel(login);
         InvestModel investModelToBeBought = investModelHelper
                 .findUserInvestModelByLevel(model, investModelDto.getInvestModelLevel());
-        Purchase unsavedPurchase = purchaseMapper
-                .getPurchaseBasedOnInvestModel(investModelToBeBought);
 
         if (investModelToBeBought.getDetails().getPriceAmount() > model.getBalanceAmount()
         || investModelToBeBought.getInvestModelStatus() != InvestModelStatus.AVAILABLE) {
@@ -62,13 +64,31 @@ public class InvestModelService {
             throw new RuntimeException(msg);
         }
 
-        UserCredentials withUpdatedModel = changeStatesAfterBuyingInvestEntity(model, investModelToBeBought);
+        Purchase unsavedPurchase = purchaseMapper
+                .getPurchaseBasedOnInvestModel(investModelToBeBought);
+        UserCredentials relinkedLostReferralBonuses = addLostReferralBonuses(model, investModelDto.getInvestModelLevel());
+        UserCredentials withUpdatedModel = changeStatesAfterBuyingInvestEntity(relinkedLostReferralBonuses, investModelToBeBought);
 
         // Everything okay with balance. So link purchase, bonuses, invest tables and then save them
         purchaseService.linkAndSavePurchaseToUserAndBonusesToReferrals(
                 unsavedPurchase, withUpdatedModel);
 
         return investModelToBeBought;
+    }
+
+    private UserCredentials addLostReferralBonuses(UserCredentials model, InvestModelLevel level) {
+        model.getIncomes().stream()
+                .filter(i -> i.getIncomeType().equals(IncomeType.LOST)
+                        && i.getPurchasedModel().equals(level)
+                ).forEach(i -> {
+                    i.setIncomeType(IncomeType.REFERRAL);
+                    i.setCreatedAt(LocalDateTime.now());
+                    model.setBalanceAmount(
+                            model.getBalanceAmount()
+                                    + i.getTransactionAmount());
+                });
+
+        return model;
     }
 
     private UserCredentials changeStatesAfterBuyingInvestEntity(UserCredentials userCredentials,

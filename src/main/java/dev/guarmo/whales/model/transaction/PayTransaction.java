@@ -18,7 +18,6 @@ public class PayTransaction {
     private Long id;
     @JsonProperty("amount")
     private Double transactionAmount;
-    @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
 }

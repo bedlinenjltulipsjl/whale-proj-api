@@ -21,6 +21,7 @@ public class GetInvestModel {
 
     private Double partnerBonusAmount;
     private Double mainBonusAmount;
+    private Double lostRefIncomeAmount  ;
 
     private InvestModelStatus investModelStatus;
     private InvestModelLevel investModelLevel;
