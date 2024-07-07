@@ -107,7 +107,7 @@ public class UserService {
     }
 
     public List<GetTopUserDto> getTopTen() {
-        Pageable topTen = PageRequest.of(0, 12);
+        Pageable topTen = PageRequest.of(0, 10);
         Page<UserCredentials> resultPage = userCredentialsRepository.findTopByMaxSumOfIncomes(topTen);
         List<UserCredentials> content = resultPage.getContent();
         return content
